@@ -4,363 +4,399 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marte Chagas - Psicóloga</title>
-    <!-- Importa a fonte 'Inter' do Google Fonts para um visual moderno -->
+    
+    <!-- Fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Favicon (ícone da aba do navegador) -->
     <link rel="icon" type="image/png" href="media/favicon.png">
     
     <style>
         /* --- VARIÁVEIS DE CORES GLOBAIS --- */
-        /* Usar variáveis torna mais fácil mudar o tema do site inteiro, alterando apenas um lugar. */
         :root {
-            --bg-color: #000000;      /* Cor de fundo da página (usada como fallback) */
-            --card-bg-color: rgba(255, 255, 255, 0.1); /* Cor de fundo dos cartões (semitransparente) */
-            --text-color: #FFFFFF;   /* Cor do texto principal */
-            --primary-color: #BAF484;/* Cor de destaque (usada na borda do avatar) */
-            --border-color: rgba(255, 255, 255, 0.2); /* Cor das bordas (semitransparente) */
+            --bg-color: #050505; 
+            --card-bg-color: rgba(25, 25, 25, 0.4); 
+            --card-hover-bg: rgba(255, 255, 255, 0.08);
+            --text-color: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --primary-color: #BAF484;
+            --primary-glow: rgba(186, 244, 132, 0.3);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --border-hover: rgba(186, 244, 132, 0.5);
         }
 
-        /* --- ESTILOS GERAIS DO CORPO E DO CONTAINER --- */
+        /* --- ESTILOS GERAIS --- */
         body {
-            font-family: 'Inter', sans-serif; /* Define a fonte padrão */
+            font-family: 'Inter', sans-serif;
             margin: 0;
-            padding: 2rem 1rem; /* Espaçamento interno para não colar nas bordas da tela */
+            padding: 3rem 1.5rem;
             background-color: var(--bg-color);
             color: var(--text-color);
-            
-            /* --- IMAGEM DE FUNDO --- */
-            background-image: url("arte/fundo.png"); /* Fundo estrelado */
-            background-size: 50%; /* Faz a imagem cobrir toda a tela */
-			background-repeat: repeat;
-            background-position: center; /* Centraliza a imagem */
-            background-attachment: fixed; /* Mantém a imagem fixa durante a rolagem */
-            
-            display: flex; /* Flexbox para centralizar o conteúdo */
+            background-image: url("arte/fundo.png");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
             justify-content: center;
-            align-items: flex-start; /* Alinha o conteúdo no topo */
-            min-height: 100vh; /* Garante que o corpo ocupe pelo menos a altura inteira da tela */
-            position: relative; /* Necessário para o z-index do pseudo-elemento funcionar */
+            align-items: flex-start;
+            min-height: 100vh;
+            box-sizing: border-box;
+            position: relative;
         }
 
-        /* --- ANIMAÇÃO DO FUNDO --- */
-        /* Cria uma sobreposição com um gradiente que se move */
-        body::after {
+        /* Animação suave do fundo escuro */
+        body::before {
             content: '';
-            position: fixed; /* Cobre a tela inteira */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0; /* Fica acima do fundo do body, mas abaixo do conteúdo */
-
-            background: linear-gradient(
-                135deg,
-                rgba(0, 0, 0, 0) 35%, /* Metade transparente */
-                #000000 45%,         /* Metade preta */
-                rgba(0, 0, 0, 0) 55%  /* Metade transparente */
-            );
-            background-size: 250% 250%; /* Tamanho grande para a animação de varredura */
-            animation: backgroundWipe 8s linear infinite; /* Aplica a animação */
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top left, rgba(186, 244, 132, 0.05), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.02), transparent 40%);
+            z-index: -1;
         }
 
-        /* Define o movimento do gradiente */
-        @keyframes backgroundWipe {
-            0% {
-                background-position: 100% 100%; /* Começa no canto inferior direito */
-            }
-            100% {
-                background-position: 0% 0%; /* Termina no canto superior esquerdo */
-            }
-        }
-
-        /* O container principal que segura todo o conteúdo e limita sua largura. */
         .container {
-            max-width: 960px; /* Largura máxima do conteúdo */
+            max-width: 900px;
             width: 100%;
-            text-align: center;
-            position: relative; /* Necessário para o z-index funcionar */
-            z-index: 1; /* Coloca o conteúdo acima da animação de fundo */
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-out;
         }
 
         /* --- CABEÇALHO --- */
         .profile-header {
-            margin-bottom: 2rem; /* Espaço abaixo do cabeçalho */
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
         .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%; /* Deixa a imagem redonda */
-            border: 3px solid var(--primary-color); /* Borda com a cor de destaque */
-            margin-bottom: 1rem;
-            object-fit: cover; /* Garante que a imagem não se distorça */
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            padding: 4px;
+            margin-bottom: 1.2rem;
+            object-fit: cover;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .avatar:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 25px var(--primary-glow);
+            transform: scale(1.05);
         }
 
         .profile-header h1 {
             margin: 0;
-            font-size: 1.75rem;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         .profile-header p {
-            margin: 0.25rem 0 0;
-            font-size: 1rem;
-            color: var(--text-color); /* Cor ajustada para melhor contraste */
+            margin: 0.5rem 0 0;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 400;
         }
 
-        /* --- ESTRUTURA PRINCIPAL (LAYOUT DE DUAS COLUNAS) --- */
+        /* --- ESTRUTURA GRID (BENTO GRID) --- */
         main {
-            display: flex;
-            justify-content: space-between; /* Coloca espaço entre as colunas */
-            flex-wrap: wrap; /* Permite que as colunas quebrem para uma linha abaixo em telas menores */
-            align-items: flex-start; /* Alinha os cards no topo de suas colunas */
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            align-items: start;
         }
 
-        .column {
-            width: 48%; /* Define a largura de cada coluna para criar o layout de duas colunas */
-        }
-        
-        /* --- ESTILO DOS CARDS (EFEITO DE VIDRO) --- */
+        /* --- ESTILO DOS CARDS --- */
         .card {
-            background-color: var(--card-bg-color); /* Fundo semitransparente */
+            background: var(--card-bg-color);
             border: 1px solid var(--border-color);
-            border-radius: 12px; /* Cantos arredondados */
-            padding: 1.5rem;
-            margin-bottom: 1.5rem; /* Espaço entre os cards */
+            border-radius: 20px;
+            padding: 2rem;
             text-align: left;
-            color: var(--text-color); /* Cor do texto dentro dos cards ajustada para branco */
-            
-            /* Efeito de desfoque para o "vidro fosco" */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); /* Para compatibilidade com Safari */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-hover);
+            background: var(--card-hover-bg);
+        }
+
+        .card.image-card {
+            padding: 0;
+            overflow: hidden;
+            border: none;
+        }
+
+        .card.image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .card.image-card:hover img {
+            transform: scale(1.08);
         }
 
         .card h2 {
             margin-top: 0;
-            font-size: 1.25rem;
-            color: var(--text-color);
-            border-bottom: 1px solid var(--border-color); /* Linha divisória com cor ajustada */
-            padding-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #FFF;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Ponto verde antes dos títulos */
+        .card h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .card p {
+            line-height: 1.6;
+            color: var(--text-muted);
             margin-bottom: 1rem;
         }
 
         .card ul {
-            list-style: none; /* Remove os marcadores padrão da lista */
+            list-style: none;
             padding: 0;
             margin: 0;
+            color: var(--text-muted);
         }
 
         .card ul li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            padding-left: 1.2rem;
+            position: relative;
+            line-height: 1.5;
         }
-       
 
-        /* Estilo para links dentro dos cards */
+        .card ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
         .card a {
-            color: var(--text-color);
-            font-weight: bold;
+            color: var(--primary-color);
             text-decoration: none;
-        }
-        .card a:hover {
-            text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+            transition: color 0.2s ease;
         }
 
-        /* --- ESTILO DOS BOTÕES DE LINK --- */
+        .card a:hover {
+            text-decoration: underline;
+            color: #FFF;
+        }
+
+        /* --- BOTÕES --- */
         .links-grid {
             display: grid;
-            grid-template-columns: 1fr; /* Padrão: Uma coluna de botões */
-            gap: 1rem; /* Espaço entre os botões */
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: auto;
         }
 
         .links-grid.two-columns {
-             grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         }
 
         a.link-button {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.75rem; /* Espaço entre ícone e texto */
+            gap: 0.75rem;
             padding: 1rem;
-            background-color: rgba(255, 255, 255, 0.15); /* Cor de fundo dos botões (um pouco mais opaca) */
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-color);
+            border-radius: 12px;
+            color: #FFF;
             text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.2s ease, background-color 0.2s ease; /* Animação suave */
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
         }
 
         a.link-button svg {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0; /* Impede que o ícone seja esmagado */
-            stroke: currentColor; /* Herda a cor do texto (branco) */
-            fill: none; /* A maioria dos ícones é apenas contorno */
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+            stroke: currentColor;
+            fill: none;
         }
         
-        /* Efeito ao passar o mouse sobre os botões */
         a.link-button:hover {
-            background-color: rgba(255, 255, 255, 0.25); /* Fundo mais claro no hover */
-            border-color: var(--border-color);
-            transform: translateY(-3px); /* Leve elevação do botão */
-        }
-        
-        /* --- ESTILO DO ESPAÇO RESERVADO PARA ARTE --- */
-        .art-placeholder {
-            border: 2px dashed var(--border-color); /* Borda pontilhada ajustada */
-            background-color: transparent; /* Fundo transparente */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 200px;
-            color: rgba(255, 255, 255, 0.8); /* Cor do texto com mais contraste */
-            text-align: center;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: var(--primary-color);
+            color: #000;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px var(--primary-glow);
+            transform: translateY(-2px);
         }
 
-        /* --- RODAPÉ --- */
-        footer {
-            margin-top: 3rem;
-            font-size: 0.9rem;
-            color: var(--text-color);
+        /* --- ANIMAÇÕES --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        /* --- AJUSTE PARA TELAS MENORES (RESPONSIVIDADE) --- */
-        /* Este bloco de código só é aplicado quando a tela tem 768 pixels de largura ou menos (ex: celulares). */
+
+        /* Delay nas animações dos cards para efeito cascata */
+        .card:nth-child(1) { animation: fadeIn 0.6s ease-out forwards; opacity: 0; animation-delay: 0.1s; }
+        .card:nth-child(2) { animation: fadeIn 0.6s ease-out forwards; opacity: 0; animation-delay: 0.2s; }
+        .card:nth-child(3) { animation: fadeIn 0.6s ease-out forwards; opacity: 0; animation-delay: 0.3s; }
+        .card:nth-child(4) { animation: fadeIn 0.6s ease-out forwards; opacity: 0; animation-delay: 0.4s; }
+        .card:nth-child(5) { animation: fadeIn 0.6s ease-out forwards; opacity: 0; animation-delay: 0.5s; }
+        .card:nth-child(6) { animation: fadeIn 0.6s ease-out forwards; opacity: 0; animation-delay: 0.6s; }
+
+        /* --- RESPONSIVIDADE --- */
         @media (max-width: 768px) {
             main {
-                flex-direction: column; /* As colunas ficam uma sobre a outra */
-            }
-
-            .column {
-                width: 100%; /* Cada coluna ocupa a largura total */
-            }
-            
-            .links-grid.two-columns {
                 grid-template-columns: 1fr;
             }
+            .profile-header h1 {
+                font-size: 1.75rem;
+            }
+            .card {
+                padding: 1.5rem;
+            }
         }
-
     </style>
 </head>
 <body>
-    <!-- O container principal que envolve todo o conteúdo visível -->
     <div class="container">
         
-        <!-- CABEÇALHO: Contém a foto de perfil, nome e subtítulo -->
+        <!-- CABEÇALHO -->
         <header class="profile-header">
             <img src="media/eu.png" alt="Foto de Perfil de Marte Chagas" class="avatar">
             <h1>Marte Nascimento Chagas</h1>
             <p>Psicóloga - CRP 05/77098</p>
         </header>
 
-        <!-- CONTEÚDO PRINCIPAL: Divide a página em duas colunas -->
+        <!-- CONTEÚDO PRINCIPAL (Grid) -->
         <main>
-            
-            <!-- COLUNA ESQUERDA -->
-            <div class="column">
-                <div class="card">
-                    <h2>Sobre mim</h2>
-                    <p>Formada pela Universidade Federal Fluminense em Rio das Ostras - RJ.</p>
-                    <ul>
-                        <li>Clínica fenomenológico existencial</li>
-                        <li>Psicólogo - CRAS Lagomar, Macaé-RJ</li>
-                    </ul>
-                </div>
+            <!-- Card 1: Sobre -->
+            <div class="card">
+                <h2>Sobre mim</h2>
+                <p>Formada pela Universidade Federal Fluminense em Rio das Ostras - RJ.</p>
+                <ul>
+                    <li>Clínica fenomenológico existencial</li>
+                    <li>Psicólogo - CRAS Lagomar, Macaé-RJ</li>
+                </ul>
+            </div>
 
-                <div class="card">
-                    <h2>Áreas de interesse</h2>
-                    <ul>
-                        <li>Raça e negritude</li>
-                        <li>Autismo, TDAH e neurodivergências</li>
-                        <li>Gênero, sexualidade e vivências LGBT</li>
-                        <li>Estresse e Ansiedade</li>
-                    </ul>
-                </div>
-                
-                <div class="card">
-                    <h2>Leituras Recomendadas</h2>
-                    <p>Uma página com artigos, livros e outras leituras que recomendo.</p>
-					<a class="link-button" href="https://www.pecro.com.br/recomendacoes" target="_blank">
-                        <svg viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 11.9976C14 9.5059 11.683 7 8.85714 7C8.52241 7 7.41904 7.00001 7.14286 7.00001C4.30254 7.00001 2 9.23752 2 11.9976C2 14.376 3.70973 16.3664 6 16.8714C6.36756 16.9525 6.75006 16.9952 7.14286 16.9952" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 11.9976C10 14.4893 12.317 16.9952 15.1429 16.9952C15.4776 16.9952 16.581 16.9952 16.8571 16.9952C19.6975 16.9952 22 14.7577 22 11.9976C22 9.6192 20.2903 7.62884 18 7.12383C17.6324 7.04278 17.2499 6.99999 16.8571 6.99999" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                        <span>Recomendações</span>
+            <!-- Card 2: Contato Rápidos -->
+            <div class="card">
+                <h2>Contato</h2>
+                <p>Entre em contato para agendar uma consulta ou tirar dúvidas.</p>
+                <div class="links-grid" style="margin-top: auto;">
+                    <a class="link-button" href="mailto:martenc.psi@gmail.com">
+                        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
+                        <span>martenc.psi@gmail.com</span>
                     </a>
-					
-				</div>
-
-                <div class="card">
-                    <img src="arte/grude.jpg" alt="Uma pintura com estilo abstrato" style="width: 100%; border-radius: 8px; display: block;">
+                    <a class="link-button" href="tel:+5522997365995">
+                        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.596-5.54-4.24-7.136-7.136l1.292-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" /></svg>
+                        <span>(22) 99763-5549</span>
+                    </a>
                 </div>
             </div>
 
-            <!-- COLUNA DIREITA -->
-            <div class="column">
-                <div class="card">
-                    <h2>Contato</h2>
-                    <p><strong>Email:</strong> <a href="mailto:martenc.psi@gmail.com">martenc.psi@gmail.com</a></p>
-                    <p><strong>Telefone:</strong> <a href="tel:+5522997365995">(22) 99763-5549</a></p>
-                </div>
+            <!-- Card 3: Áreas de Interesse -->
+            <div class="card">
+                <h2>Áreas de interesse</h2>
+                <ul>
+                    <li>Raça e negritude</li>
+                    <li>Autismo, TDAH e neurodivergências</li>
+                    <li>Gênero, sexualidade e vivências LGBT</li>
+                    <li>Estresse e Ansiedade</li>
+                </ul>
+            </div>
 
-                <div class="card">
-                    <h2>Outros Contatos / Recomendações</h2>
-                    <p>Profissionais e psicólogos que confio e recomendo.</p>
-                     <div class="links-grid" style="margin-top: 1rem;">
-                        <a class="link-button" href="https://www.instagram.com/psi.mariaclaracarvalhom/" target="_blank">
-                            <svg stroke-width="1.8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                            <span>Maria Clara Carvalho Mello CRP 05/77178</span>
-                        </a>
-                        <a class="link-button" href="https://www.instagram.com/psi.nayaram/" target="_blank">
-                            <svg stroke-width="1.8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                            <span>Nayara Mesquita CRP 05/77114</span>
-                        </a>
-                        <a class="link-button" href="https://www.instagram.com/queldonega/" target="_blank">
-                            <svg stroke-width="1.8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                            <span>Raquel Donegá CRP 05/77092</span>
-                        </a>
-                    </div>
+            <!-- Card 4: Links Importantes -->
+            <div class="card">
+                <h2>Links Úteis</h2>
+                <p>Me acompanhe nas redes e acesse meus trabalhos.</p>
+                <div class="links-grid two-columns">
+                    <a class="link-button" href="https://instagram.com/marte.psi" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z"></path><path d="M17.5 6.51L17.51 6.49889" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        <span>Instagram</span>
+                    </a>
+                    <a class="link-button" href="https://wa.me/5522997635549?text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+o+atendimento%21" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M22 12C22 17.5228 17.5228 22 12 22C10.1786 22 8.47087 21.513 7 20.6622L2 21.5L2.83209 16C2.29689 14.7751 2 13.4222 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12.9604 13.8683L15.0399 13.4624L17 14.2149V16.0385C17 16.6449 16.4783 17.1073 15.8901 16.9783C14.3671 16.6444 11.5997 15.8043 9.67826 13.8683C7.84859 12.0248 7.22267 9.45734 7.01039 8.04128C6.92535 7.47406 7.3737 7 7.94306 7H9.83707L10.572 8.96888L10.1832 11.0701" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a class="link-button" href="http://lattes.cnpq.br/0298685385668125" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M2.57331 8.46334L11.2317 4.13416C11.4006 4.04971 11.5994 4.04971 11.7683 4.13416L20.4267 8.46334C20.8689 8.68446 20.8689 9.31554 20.4267 9.53666L11.7683 13.8658C11.5994 13.9503 11.4006 13.9503 11.2317 13.8658L2.57331 9.53666C2.13108 9.31554 2.13108 8.68446 2.57331 8.46334Z" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22.5 13L22.5 9.5L20.5 8.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.5 10.5V15.9121C4.5 16.6843 4.94459 17.3876 5.6422 17.7188L10.6422 20.0928C11.185 20.3505 11.815 20.3505 12.3578 20.0928L17.3578 17.7188C18.0554 17.3876 18.5 16.6843 18.5 15.9121V10.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        <span>Lattes</span>
+                    </a>
+                    <a class="link-button" href="https://pecro.com.br/arte" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M14.3632 5.65156L15.8431 4.17157C16.6242 3.39052 17.8905 3.39052 18.6716 4.17157L20.0858 5.58579C20.8668 6.36683 20.8668 7.63316 20.0858 8.41421L18.6058 9.8942M14.3632 5.65156L4.74749 15.2672C4.41542 15.5993 4.21079 16.0376 4.16947 16.5054L3.92738 19.2459C3.87261 19.8659 4.39148 20.3848 5.0115 20.33L7.75191 20.0879C8.21972 20.0466 8.65806 19.8419 8.99013 19.5099L18.6058 9.8942M14.3632 5.65156L18.6058 9.8942" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        <span>Artes</span>
+                    </a>
                 </div>
+            </div>
 
-                <div class="card">
-                    <h2>Links</h2>
-                    <div class="links-grid two-columns">
-                        <a class="link-button" href="https://instagram.com/marte.psi" target="_blank">
-                            <svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z"></path><path d="M17.5 6.51L17.51 6.49889" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                            <span>Instagram</span>
-                        </a>
-                        <a class="link-button" href="https://wa.me/5522997635549?text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+o+atendimento%21" target="_blank">
-                            <svg viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 12C22 17.5228 17.5228 22 12 22C10.1786 22 8.47087 21.513 7 20.6622L2 21.5L2.83209 16C2.29689 14.7751 2 13.4222 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12.9604 13.8683L15.0399 13.4624L17 14.2149V16.0385C17 16.6449 16.4783 17.1073 15.8901 16.9783C14.3671 16.6444 11.5997 15.8043 9.67826 13.8683C7.84859 12.0248 7.22267 9.45734 7.01039 8.04128C6.92535 7.47406 7.3737 7 7.94306 7H9.83707L10.572 8.96888L10.1832 11.0701" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                            <span>WhatsApp</span>
-                        </a>
-                        <a class="link-button" href="http://lattes.cnpq.br/0298685385668125" target="_blank">
-                            <svg viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.57331 8.46334L11.2317 4.13416C11.4006 4.04971 11.5994 4.04971 11.7683 4.13416L20.4267 8.46334C20.8689 8.68446 20.8689 9.31554 20.4267 9.53666L11.7683 13.8658C11.5994 13.9503 11.4006 13.9503 11.2317 13.8658L2.57331 9.53666C2.13108 9.31554 2.13108 8.68446 2.57331 8.46334Z" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22.5 13L22.5 9.5L20.5 8.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.5 10.5V15.9121C4.5 16.6843 4.94459 17.3876 5.6422 17.7188L10.6422 20.0928C11.185 20.3505 11.815 20.3505 12.3578 20.0928L17.3578 17.7188C18.0554 17.3876 18.5 16.6843 18.5 15.9121V10.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                            <span>Currículo Lattes</span>
-                        </a>
-						<a class="link-button" href="https://pecro.com.br/arte" target="_blank">
-                            <svg viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.3632 5.65156L15.8431 4.17157C16.6242 3.39052 17.8905 3.39052 18.6716 4.17157L20.0858 5.58579C20.8668 6.36683 20.8668 7.63316 20.0858 8.41421L18.6058 9.8942M14.3632 5.65156L4.74749 15.2672C4.41542 15.5993 4.21079 16.0376 4.16947 16.5054L3.92738 19.2459C3.87261 19.8659 4.39148 20.3848 5.0115 20.33L7.75191 20.0879C8.21972 20.0466 8.65806 19.8419 8.99013 19.5099L18.6058 9.8942M14.3632 5.65156L18.6058 9.8942" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                            <span>Artes</span>
-                        </a>
-						
-						
-						
-                    </div>
-                </div>
+            <!-- Card 5: Recomendações e Profissionais -->
+            <div class="card" style="grid-column: 1 / -1;">
+                <h2>Recomendações e Indicações</h2>
+                <p>Profissionais que confio, leituras e artigos importantes.</p>
                 
-                <div class="card">
-                    <img src="arte/-144.png" alt="Uma segunda pintura com estilo abstrato" style="width: 100%; border-radius: 8px; display: block;">
+                <div class="links-grid two-columns" style="margin-top: 1rem;">
+                    <a class="link-button" href="https://www.pecro.com.br/recomendacoes" target="_blank" style="grid-column: 1 / -1; background: rgba(186, 244, 132, 0.1); border-color: var(--primary-color);">
+                        <svg viewBox="0 0 24 24"><path d="M14 11.9976C14 9.5059 11.683 7 8.85714 7C8.52241 7 7.41904 7.00001 7.14286 7.00001C4.30254 7.00001 2 9.23752 2 11.9976C2 14.376 3.70973 16.3664 6 16.8714C6.36756 16.9525 6.75006 16.9952 7.14286 16.9952" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 11.9976C10 14.4893 12.317 16.9952 15.1429 16.9952C15.4776 16.9952 16.581 16.9952 16.8571 16.9952C19.6975 16.9952 22 14.7577 22 11.9976C22 9.6192 20.2903 7.62884 18 7.12383C17.6324 7.04278 17.2499 6.99999 16.8571 6.99999" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        <span>Biblioteca: Leituras Recomendadas</span>
+                    </a>
+                    
+                    <a class="link-button" href="https://www.instagram.com/psi.mariaclaracarvalhom/" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        <span>Maria Clara - CRP 05/77178</span>
+                    </a>
+                    <a class="link-button" href="https://www.instagram.com/psi.nayaram/" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        <span>Nayara Mesquita - CRP 05/77114</span>
+                    </a>
+                    <a class="link-button" href="https://www.instagram.com/queldonega/" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        <span>Raquel Donegá - CRP 05/77092</span>
+                    </a>
                 </div>
             </div>
+
+            <!-- Card 6 e 7: Imagens (Artes) -->
+            <div class="card image-card">
+                <img src="arte/grude.jpg" alt="Pintura abstrata 1">
+            </div>
+            
+            <div class="card image-card">
+                <img src="arte/-144.png" alt="Pintura abstrata 2">
+            </div>
+
         </main>
         
-        <!-- RODAPÉ: Informações de copyright -->
-        <footer>
+        <!-- RODAPÉ -->
+        <footer style="text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.9rem;">
             <p>&copy; 2026 Marte Chagas.</p>
         </footer>
 
     </div>
 </body>
 </html>
-
