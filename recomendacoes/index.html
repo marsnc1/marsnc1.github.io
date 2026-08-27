@@ -3,207 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedro Chagas - Psicólogo</title>
-    <!-- Importa a fonte 'Inter' do Google Fonts para um visual moderno -->
+    <title>Marte Chagas - Recomendações</title>
+    
+    <!-- Fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Favicon (ícone da aba do navegador) -->
-    <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="media/favicon.png">
     
     <style>
         /* --- VARIÁVEIS DE CORES GLOBAIS --- */
-        /* Usar variáveis torna mais fácil mudar o tema do site inteiro, alterando apenas um lugar. */
         :root {
-            --bg-color: #000000;      /* Cor de fundo da página (usada como fallback) */
-            --card-bg-color: rgba(255, 255, 255, 0.1); /* Cor de fundo dos cartões (semitransparente) */
-            --text-color: #FFFFFF;   /* Cor do texto principal */
-            --primary-color: #BAF484;/* Cor de destaque (usada na borda do avatar) */
-            --border-color: rgba(255, 255, 255, 0.2); /* Cor das bordas (semitransparente) */
+            --bg-color: #050505; 
+            --card-bg-color: rgba(25, 25, 25, 0.4); 
+            --card-hover-bg: rgba(255, 255, 255, 0.08);
+            --text-color: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --primary-color: #BAF484;
+            --primary-glow: rgba(186, 244, 132, 0.3);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --border-hover: rgba(186, 244, 132, 0.5);
         }
 
-        /* --- ESTILOS GERAIS DO CORPO E DO CONTAINER --- */
+        /* --- ESTILOS GERAIS --- */
         body {
-            font-family: 'Inter', sans-serif; /* Define a fonte padrão */
+            font-family: 'Inter', sans-serif;
             margin: 0;
-            padding: 2rem 1rem; /* Espaçamento interno para não colar nas bordas da tela */
+            padding: 3rem 1.5rem;
             background-color: var(--bg-color);
             color: var(--text-color);
-            
-            /* --- IMAGEM DE FUNDO --- */
-            background-image: url("fundo.png"); /* Fundo estrelado */
-            background-size: 50%; /* Define o tamanho da imagem de fundo */
-            background-repeat: repeat; /* Faz a imagem se repetir */
-            background-position: center; /* Centraliza a imagem */
-            background-attachment: fixed; /* Mantém a imagem fixa durante a rolagem */
-            
-            display: flex; /* Flexbox para centralizar o conteúdo */
-            justify-content: center;
-            align-items: flex-start; /* Alinha o conteúdo no topo */
-            min-height: 100vh; /* Garante que o corpo ocupe pelo menos a altura inteira da tela */
-            position: relative; /* Necessário para o z-index do pseudo-elemento funcionar */
-        }
-
-        /* --- ANIMAÇÃO DO FUNDO --- */
-        /* Cria uma sobreposição com um gradiente que se move. */
-        body::after {
-            content: ''; 
-            position: fixed; 
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0; 
-
-            background: linear-gradient(
-                135deg,
-                rgba(0, 0, 0, 0) 35%, 
-                #000000 45%,         
-                rgba(0, 0, 0, 0) 55%  
-            );
-            background-size: 250% 250%; 
-            animation: backgroundWipe 8s linear infinite; 
-        }
-
-        /* Define o movimento do gradiente da animação. */
-        @keyframes backgroundWipe {
-            0% {
-                background-position: 100% 100%; 
-            }
-            100% {
-                background-position: 0% 0%; 
-            }
-        }
-
-        /* O container principal que segura todo o conteúdo e limita sua largura. */
-        .container {
-            max-width: 960px; 
-            width: 100%;
-            text-align: center;
-            position: relative; 
-            z-index: 1; /* Coloca todo o conteúdo acima da animação de fundo. */
-        }
-        
-        /* --- ESTRUTURA PRINCIPAL (LAYOUT DE UMA COLUNA) --- */
-        /* O 'main' agora organiza os cards em uma única coluna vertical e os centraliza na página. */
-        main {
+            background-image: url("fundo.png"); /* Mantido o seu caminho original */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
-            flex-direction: column; /* Empilha os cards verticalmente */
-            align-items: center; /* Centraliza a coluna de cards na página */
-        }
-        
-        /* --- ESTILO DOS CARDS (EFEITO DE VIDRO) --- */
-        .card {
-            background-color: var(--card-bg-color); 
-            border: 1px solid var(--border-color);
-            border-radius: 12px; 
-            padding: 1.5rem;
-            margin-bottom: 1.5rem; 
-            text-align: left;
-            color: var(--text-color);
-            width: 80%; /* Define a largura do card para não ocupar a tela inteira em desktops */
-            
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); 
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            box-sizing: border-box;
+            position: relative;
         }
 
+        /* Animação suave do fundo escuro (mesma do index) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top left, rgba(186, 244, 132, 0.05), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.02), transparent 40%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 800px; /* Um pouco mais estreito que a home para leitura confortável */
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- ESTRUTURA PRINCIPAL --- */
+        main {
+            display: grid;
+            grid-template-columns: 1fr; /* Coluna única para a lista de livros */
+            gap: 1.5rem;
+        }
+
+        /* --- ESTILO DOS CARDS --- */
+        .card {
+            background: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: left;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-hover);
+            background: var(--card-hover-bg);
+        }
+
+        /* --- TIPOGRAFIA DOS CARDS --- */
         .card h1, .card h2 {
             margin-top: 0;
             font-size: 1.25rem;
-            color: var(--text-color);
-            border-bottom: 1px solid var(--border-color); 
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #FFF;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Ponto verde antes dos títulos */
+        .card h1::before, .card h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .card p {
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-top: 0;
+            margin-bottom: 0.8rem;
         }
 
         .card ul {
-            list-style: none; /* Remove os marcadores padrão da lista (as bolinhas). */
+            list-style: none;
             padding: 0;
             margin: 0;
+            color: var(--text-muted);
         }
 
         .card ul li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            padding-left: 1.2rem;
+            position: relative;
+            line-height: 1.5;
+            transition: color 0.2s ease;
         }
 
-        /* --- RODAPÉ --- */
-        footer {
-            margin-top: 3rem;
-            font-size: 0.9rem;
-            color: var(--text-color);
+        .card ul li:hover {
+            color: #FFF; /* Texto fica branco ao passar o mouse */
         }
-        
-        /* --- AJUSTE PARA TELAS MENORES (RESPONSIVIDADE) --- */
+
+        /* Seta verde antes dos itens da lista */
+        .card ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        /* --- ESTILO DOS LINKS NOS TEXTOS E LISTAS --- */
+        .card p a, .card ul li a {
+            color: var(--text-color); /* Texto branco por padrão */
+            text-decoration: none; /* Tira o sublinhado padrão */
+            transition: color 0.2s ease;
+        }
+
+        .card p a:hover, .card ul li a:hover {
+            color: var(--primary-color); /* Fica verde ao passar o mouse */
+        }
+
+        /* --- ANIMAÇÕES --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Efeito cascata: adicionado até o card 7 para contemplar a lista toda */
+        .card { opacity: 0; animation: fadeIn 0.6s ease-out forwards; }
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        .card:nth-child(6) { animation-delay: 0.6s; }
+        .card:nth-child(7) { animation-delay: 0.7s; }
+
+        /* --- RESPONSIVIDADE --- */
         @media (max-width: 768px) {
             .card {
-                width: 95%; /* Em telas menores, o card ocupa mais espaço para melhor leitura. */
+                padding: 1.5rem;
             }
         }
-
     </style>
 </head>
 <body>
-    <!-- O container principal que envolve todo o conteúdo visível -->
     <div class="container">
         
-        <!-- CONTEÚDO PRINCIPAL: Organizado em uma única coluna -->
+        <!-- CONTEÚDO PRINCIPAL -->
         <main>
             <div class="card">
                 <h2 id="gestalt-terapia">Gestalt Terapia</h2>
-                <p> Perls, Frederick - A Abordagem Gestáltica e Testemunha Ocular da Terapia</p>
-                <p> Perls, Hefferline e Goodman - Gestalt-terapia </p>
-            </div>	
-			<div class="card">
-                   <h2 id="neuroci-ncias">Neurociências</h2>
+					<ul>
+						<li><a href="SEU_LINK_AQUI" target="_blank">Perls, Frederick - A Abordagem Gestáltica e Testemunha Ocular da Terapia</a></p>
+						<li><a href="SEU_LINK_AQUI" target="_blank">Perls, Hefferline e Goodman - Gestalt-terapia</a></p>
+						<li><a href="https://www.gruposummus.com.br/livro/gestalt-terapia-fundamentos-epistemologicos-e-influencias-filosoficas/" target="_blank">Fukumitsu, Karina Okajima;Frazão, Lilian Meyer - Gestalt-terapia: Fundamentos epistemológicos e influências filosóficas</a></p>
+					</ul>
+            </div>  
+
+            <div class="card">
+                <h2 id="neuroci-ncias">Neurociências</h2>
                 <ul>
-                    <li>Salpolsky, Robert - Por que a Zebras não obtém úlceras</li>
+                    <li><a href="https://www.estantevirtual.com.br/busca?nsCat=Natural&q=por%20que%20as%20zebras%20n%C3%A3o%20t%C3%AAm%20%C3%BAlceras%3F&searchField=titulo-autor" target="_blank">Salpolsky, Robert - Por que a Zebras não obtém úlceras</a></li>
                 </ul>
-            </div>	
-			<div class="card">
-                    <h2 id="autismo">Autismo</h2>
+            </div>  
+
+            <div class="card">
+                <h2 id="autismo">Autismo</h2>
                 <ul>
-                    <li>Price, Devon - Autismo sem máscara: Uma jornada de autodescoberta e aceitação</li>
+                    <li><a href="SEU_LINK_AQUI" target="_blank">Price, Devon - Autismo sem máscara: Uma jornada de autodescoberta e aceitação</a></li>
                 </ul>
-            </div>	
-			<div class="card">
-                    <h2 id="negritude">Negritude</h2>
+            </div>  
+
+            <div class="card">
+                <h2 id="negritude">Negritude</h2>
                 <ul>
-                    <li>Bento, Cida - O pacto da branquitude</li>
-                    <li>Fernandes, Rhuann - Negritude e não monogamia: as micropolíticas do amor</li>
+                    <li><a href="SEU_LINK_AQUI" target="_blank">Bento, Cida - O pacto da branquitude</a></li>
+                    <li><a href="SEU_LINK_AQUI" target="_blank">Fernandes, Rhuann - Negritude e não monogamia: as micropolíticas do amor</a></li>
                 </ul>
-            </div>	
-			<div class="card">
-                    <h2 id="filosofia">Filosofia</h2>
+            </div>  
+
+            <div class="card">
+                <h2 id="filosofia">Filosofia</h2>
                 <ul>
-                    <li>Byung-Chul Han - Não coisas: Reviravoltas do mundo da vida</li>
-                    <li>Byung-Chul Han - Sociedade do cansaço</li>
-                    <li>Foucault, Michel - História da Loucura: Na Idade Clássica</li>
-                    <li>Foucault, Michel - História da sexualidade 1:  A vontade de saber</li>
-                    <li>Foucault, Michel - História da sexualidade 2: O uso dos prazeres</li>
+                    <li><a href="SEU_LINK_AQUI" target="_blank">Byung-Chul Han - Não coisas: Reviravoltas do mundo da vida</a></li>
+                    <li><a href="SEU_LINK_AQUI" target="_blank">Byung-Chul Han - Sociedade do cansaço</a></li>
+                    <li><a href="SEU_LINK_AQUI" target="_blank">Foucault, Michel - História da Loucura: Na Idade Clássica</a></li>
+                    <li><a href="SEU_LINK_AQUI" target="_blank">Foucault, Michel - História da sexualidade 1:  A vontade de saber</a></li>
+                    <li><a href="SEU_LINK_AQUI" target="_blank">Foucault, Michel - História da sexualidade 2: O uso dos prazeres</a></li>
                 </ul>
-                
-            </div>	
-			<div class="card">
-				<h2 id="humanidades">Humanidades</h2>
+            </div>  
+
+            <div class="card">
+                <h2 id="humanidades">Humanidades</h2>
                 <ul>
-                    <li>Huizinga, Johan - Homo ludens: O jogo como elemento da cultura</li>
+                    <li><a href="SEU_LINK_AQUI" target="_blank">Huizinga, Johan - Homo ludens: O jogo como elemento da cultura</a></li>
                 </ul>
-			</div>	
-			<div class="card">
+            </div>  
+
+            <div class="card">
                 <h1 id="textos-partes-de-textos-cap-tulos-de-livros-e-afins">Textos, partes de textos, capítulos de livros e afins</h1>
                 <ul>
-                    <li>TIM INGOLD – Repensando o animado, reanimando o pensamento</li>
+                    <li><a href="SEU_LINK_AQUI" target="_blank">TIM INGOLD – Repensando o animado, reanimando o pensamento</a></li>
                 </ul>
             </div>
         </main>
         
-        <!-- RODAPÉ: Informações de copyright -->
-        <footer>
+        <!-- RODAPÉ -->
+        <footer style="text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.9rem;">
             <p>&copy; 2025 Pedro do Nascimento Chagas.</p>
         </footer>
 
     </div>
 </body>
 </html>
-
