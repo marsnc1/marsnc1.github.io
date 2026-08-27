@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedro Chagas - Psicólogo</title>
+    <title>Marte Chagas - Recomendações</title>
     
     <!-- Fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="media/favicon.png">
     
     <style>
         /* --- VARIÁVEIS DE CORES GLOBAIS --- */
@@ -46,27 +46,50 @@
             position: relative;
         }
 
-        /* Animação suave do fundo escuro (mesma do index) */
+        /* Animação suave do fundo escuro */
         body::before {
             content: '';
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at top left, rgba(186, 244, 132, 0.05), transparent 40%),
                         radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.02), transparent 40%);
-        /* O container principal que segura todo o conteúdo e limita sua largura. */
+            z-index: -1;
+        }
+
         .container {
-            max-width: 960px; /* Alargado um pouco para acomodar bem as duas colunas */
+            max-width: 1200px;
             width: 100%;
             position: relative;
             z-index: 1;
         }
 
+        /* --- HEADER ADAPTADO --- */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 3rem; /* Espaçamento entre o título e os cards */
+        }
+
+        .profile-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .profile-header p {
+            margin: 1rem auto 0;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 400;
+            max-width: 600px; /* Limita a largura do texto para melhor leitura */
+            line-height: 1.5;
+        }
+
         /* --- ESTRUTURA PRINCIPAL --- */
         main {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Define 2 colunas de larguras iguais */
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
-            align-items: start;
         }
 
         /* --- ESTILO DOS CARDS --- */
@@ -82,8 +105,8 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
+            height: 100%;
             box-sizing: border-box;
-            width: 100%; /* Garante que o card preencha todo o espaço da sua coluna */
         }
 
         .card:hover {
@@ -139,7 +162,7 @@
         }
 
         .card ul li:hover {
-            color: #FFF; /* Texto fica branco ao passar o mouse */
+            color: #FFF;
         }
 
         /* Seta verde antes dos itens da lista */
@@ -152,13 +175,13 @@
 
         /* --- ESTILO DOS LINKS NOS TEXTOS E LISTAS --- */
         .card p a, .card ul li a {
-            color: var(--text-color); /* Texto branco por padrão */
-            text-decoration: none; /* Tira o sublinhado padrão */
+            color: var(--text-color);
+            text-decoration: none;
             transition: color 0.2s ease;
         }
 
         .card p a:hover, .card ul li a:hover {
-            color: var(--primary-color); /* Fica verde ao passar o mouse */
+            color: var(--primary-color);
         }
 
         /* --- ANIMAÇÕES --- */
@@ -167,7 +190,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Efeito cascata: adicionado até o card 7 para contemplar a lista toda */
         .card { opacity: 0; animation: fadeIn 0.6s ease-out forwards; }
         .card:nth-child(1) { animation-delay: 0.1s; }
         .card:nth-child(2) { animation-delay: 0.2s; }
@@ -180,28 +202,32 @@
         /* --- RESPONSIVIDADE --- */
         @media (max-width: 768px) {
             main {
-                grid-template-columns: 1fr; /* Muda para 1 coluna no celular */
+                grid-template-columns: 1fr; /* 1 coluna no celular */
             }
             .card {
                 padding: 1.5rem;
+            }
+            .profile-header h1 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container">     
+        
+        <!-- CABEÇALHO -->
+        <header class="profile-header">
+            <h1>Recomendações de leituras!</h1>
+            <p>Não é tudo que li, nem tudo que eu recomendo. São uma coletânea de coisas que lembrei na época e nunca mais atualizei.</p>
+        </header>
         
         <!-- CONTEÚDO PRINCIPAL -->
         <main>
-            <!-- Banner Explicativo (Ocupa as duas colunas) -->
-            <div class="card" style="grid-column: 1 / -1; text-align: center; border-color: var(--primary-color); background: rgba(186, 244, 132, 0.05);">
-                <h2 style="justify-content: center;">Sobre a Biblioteca</h2>
-                <p style="margin-bottom: 0;">Neste espaço reúno os livros, artigos e textos que fundamentam a minha prática clínica e pesquisa. São leituras que recomendo para pacientes, estudantes e profissionais. Sinta-se à vontade para explorar!</p>
-            </div>
-
             <div class="card">
                 <h2 id="gestalt-terapia">Gestalt Terapia</h2>
                 <ul>
+                    <!-- Corrigido o fechamento da tag para </li> -->
                     <li><a href="https://www.grupogen.com.br/a-abordagem-gestaltica-e-testemunha-ocular-da-terapia" target="_blank">Perls, Frederick - A Abordagem Gestáltica e Testemunha Ocular da Terapia</a></li>
                     <li><a href="https://www.gruposummus.com.br/livro/gestalt-terapia/" target="_blank">Perls, Hefferline e Goodman - Gestalt-terapia</a></li>
                     <li><a href="https://www.gruposummus.com.br/livro/gestalt-terapia-fundamentos-epistemologicos-e-influencias-filosoficas/" target="_blank">Fukumitsu, Karina Okajima; Frazão, Lilian Meyer - Gestalt-terapia: Fundamentos epistemológicos e influências filosóficas</a></li>
@@ -209,42 +235,49 @@
             </div>  
 
             <div class="card">
+                <h2 id="neuroci-ncias">Neurociências</h2>
+                <ul>
+                    <li><a href="https://www.estantevirtual.com.br/busca?nsCat=Natural&q=por%20que%20as%20zebras%20n%C3%A3o%20t%C3%AAm%20%C3%BAlceras%3F&searchField=titulo-autor" target="_blank">Salpolsky, Robert - Por que a Zebras não obtém úlceras</a></li>
+                </ul>
+            </div>  
+
+            <div class="card">
                 <h2 id="autismo">Autismo</h2>
                 <ul>
-                    <li><a href="SEU_LINK_AQUI" target="_blank">Price, Devon - Autismo sem máscara: Uma jornada de autodescoberta e aceitação</a></li>
+                    <li><a href="https://www.nversos.com.br/produtos/autismo-sem-mascara1/" target="_blank">Price, Devon - Autismo sem máscara: Uma jornada de autodescoberta e aceitação</a></li>
                 </ul>
             </div>  
 
             <div class="card">
                 <h2 id="negritude">Negritude</h2>
                 <ul>
-                    <li><a href="SEU_LINK_AQUI" target="_blank">Bento, Cida - O pacto da branquitude</a></li>
-                    <li><a href="SEU_LINK_AQUI" target="_blank">Fernandes, Rhuann - Negritude e não monogamia: as micropolíticas do amor</a></li>
+                    <li><a href="https://www.companhiadasletras.com.br/livro/9786559212323/o-pacto-da-branquitude" target="_blank">Bento, Cida - O pacto da branquitude</a></li>
+                    <li><a href="https://www.autografia.com.br/produto/negritude-e-nao-monogamia-as-micropoliticas-do-amor/" target="_blank">Fernandes, Rhuann - Negritude e não monogamia: as micropolíticas do amor</a></li>
                 </ul>
             </div>  
 
             <div class="card">
                 <h2 id="filosofia">Filosofia</h2>
                 <ul>
-                    <li><a href="SEU_LINK_AQUI" target="_blank">Byung-Chul Han - Não coisas: Reviravoltas do mundo da vida</a></li>
-                    <li><a href="SEU_LINK_AQUI" target="_blank">Byung-Chul Han - Sociedade do cansaço</a></li>
-                    <li><a href="SEU_LINK_AQUI" target="_blank">Foucault, Michel - História da Loucura: Na Idade Clássica</a></li>
-                    <li><a href="SEU_LINK_AQUI" target="_blank">Foucault, Michel - História da sexualidade 1:  A vontade de saber</a></li>
-                    <li><a href="SEU_LINK_AQUI" target="_blank">Foucault, Michel - História da sexualidade 2: O uso dos prazeres</a></li>
+                    <li><a href="https://www.livrariavozes.com.br/naocoisas6557136801/p" target="_blank">Byung-Chul Han - Não coisas: Reviravoltas do mundo da vida</a></li>
+                    <li><a href="https://www.livrariavozes.com.br/sociedadedocansaco8532649963/p" target="_blank">Byung-Chul Han - Sociedade do cansaço</a></li>
+                    <li><a href="https://editoraperspectiva.com.br/produtos/historia-da-loucura-nova-edicao/" target="_blank">Foucault, Michel - História da Loucura: Na Idade Clássica</a></li>
+                    <li><a href="https://www.record.com.br/products/historia-da-sexualidade-a-vontade-do-saber-vol-1?_pos=7&_sid=6f68a4a45&_ss=r" target="_blank">Foucault, Michel - História da sexualidade 1: A vontade de saber</a></li>
+                    <li><a href="https://www.record.com.br/products/historia-da-sexualidade-o-uso-dos-prazeres-vol-2?_pos=2&_sid=6f68a4a45&_ss=r" target="_blank">Foucault, Michel - História da sexualidade 2: O uso dos prazeres</a></li>
                 </ul>
             </div>  
 
             <div class="card">
                 <h2 id="humanidades">Humanidades</h2>
                 <ul>
-                    <li><a href="SEU_LINK_AQUI" target="_blank">Huizinga, Johan - Homo ludens: O jogo como elemento da cultura</a></li>
+                    <li><a href="https://editoraperspectiva.com.br/produtos/homo-ludens-nova-edicao-revisada/" target="_blank">Huizinga, Johan - Homo ludens: O jogo como elemento da cultura</a></li>
                 </ul>
             </div>  
 
             <div class="card">
-                <h1 id="textos-partes-de-textos-cap-tulos-de-livros-e-afins">Textos, partes de textos, capítulos de livros e afins</h1>
+                <h1 id="textos-partes-de-textos-cap-tulos-de-livros-e-afins">Textos e capítulos</h1>
                 <ul>
-                    <li><a href="SEU_LINK_AQUI" target="_blank">TIM INGOLD – Repensando o animado, reanimando o pensamento</a></li>
+                    <li><a href="https://seer.ufrgs.br/EspacoAmerindio/article/view/43552" target="_blank">TIM INGOLD – Repensando o animado, reanimando o pensamento</a></li>
                 </ul>
             </div>
         </main>
