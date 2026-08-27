@@ -219,15 +219,16 @@
         }
 
         .links-grid.two-columns {
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            /* Aumentado de 140px para 260px para os botões ficarem mais largos */
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         }
 
         a.link-button {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            padding: 1rem;
+            justify-content: flex-start; /* Alinhado à esquerda para organizar os nomes longos */
+            gap: 1rem;
+            padding: 1rem 1.5rem; /* Mais espaçamento interno nas laterais */
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -300,7 +301,8 @@
                 <p>Formada pela Universidade Federal Fluminense em Rio das Ostras - RJ.</p>
                 <ul>
                     <li>Clínica fenomenológico existencial</li>
-                    <li>Psicólogo - CRAS Lagomar, Macaé-RJ</li>
+                    <li>Psicóloga - CRAS Lagomar, Macaé-RJ</li>
+                    <li>Pós Graduanda em Sexologia Clínica</li>
                 </ul>
             </div>
 
@@ -367,16 +369,28 @@
                     </a>
                     
                     <a class="link-button" href="https://www.instagram.com/psi.mariaclaracarvalhom/" target="_blank">
-                        <svg viewBox="0 0 24 24"><path d="M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                        <span>Maria Clara - CRP 05/77178</span>
+                        <img src="https://unavatar.io/instagram/psi.mariaclaracarvalhom" alt="Maria Clara" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover;" onerror="this.outerHTML='<svg viewBox=\'0 0 24 24\'><path d=\'M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20\' stroke-linecap=\'round\' stroke-linejoin=\'round\'></path><path d=\'M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z\' stroke-linecap=\'round\' stroke-linejoin=\'round\'></path></svg>'">
+                        <span>Maria Clara<br><span style="font-size: 0.85em; font-weight: 400; color: var(--text-muted);">CRP 05/77178</span></span>
                     </a>
                     <a class="link-button" href="https://www.instagram.com/psi.nayaram/" target="_blank">
-                        <svg viewBox="0 0 24 24"><path d="M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                        <span>Nayara Mesquita - CRP 05/77114</span>
+                        <img src="https://unavatar.io/instagram/psi.nayaram" alt="Nayara Mesquita" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover;" onerror="this.outerHTML='<svg viewBox=\'0 0 24 24\'><path d=\'M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20\' stroke-linecap=\'round\' stroke-linejoin=\'round\'></path><path d=\'M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z\' stroke-linecap=\'round\' stroke-linejoin=\'round\'></path></svg>'">
+                        <span>Nayara Mesquita<br><span style="font-size: 0.85em; font-weight: 400; color: var(--text-muted);">CRP 05/77114</span></span>
                     </a>
                     <a class="link-button" href="https://www.instagram.com/queldonega/" target="_blank">
-                        <svg viewBox="0 0 24 24"><path d="M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                        <span>Raquel Donegá - CRP 05/77092</span>
+                        <img src="https://unavatar.io/instagram/queldonega" alt="Raquel Donegá" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover;" onerror="this.outerHTML='<svg viewBox=\'0 0 24 24\'><path d=\'M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20\' stroke-linecap=\'round\' stroke-linejoin=\'round\'></path><path d=\'M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z\' stroke-linecap=\'round\' stroke-linejoin=\'round\'></path></svg>'">
+                        <span>Raquel Donegá<br><span style="font-size: 0.85em; font-weight: 400; color: var(--text-muted);">CRP 05/77092</span></span>
+                    </a>
+                    <a class="link-button" href="https://www.instagram.com/joaocortez.psi/" target="_blank">
+                        <img src="https://unavatar.io/instagram/joaocortez.psi" alt="João Cortes" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover;" onerror="this.outerHTML='<svg viewBox=\'0 0 24 24\'><path d=\'M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20\' stroke-linecap=\'round\' stroke-linejoin=\'round\'></path><path d=\'M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z\' stroke-linecap=\'round\' stroke-linejoin=\'round\'></path></svg>'">
+                        <span>João Cortes<br><span style="font-size: 0.85em; font-weight: 400; color: var(--text-muted);">CRP 05/76792</span></span>
+                    </a>
+                    <a class="link-button" href="https://www.instagram.com/psi.kathleengalvao/" target="_blank">
+                        <img src="https://unavatar.io/instagram/psi.kathleengalvao" alt="Kathleen Galvão" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover;" onerror="this.outerHTML='<svg viewBox=\'0 0 24 24\'><path d=\'M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20\' stroke-linecap=\'round\' stroke-linejoin=\'round\'></path><path d=\'M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z\' stroke-linecap=\'round\' stroke-linejoin=\'round\'></path></svg>'">
+                        <span>Kathleen Galvão<br><span style="font-size: 0.85em; font-weight: 400; color: var(--text-muted);">CRP 06/205459</span></span>
+                    </a>
+                    <a class="link-button" href="https://www.instagram.com/psioliveirawilliam/" target="_blank">
+                        <img src="https://unavatar.io/instagram/psioliveirawilliam" alt="William de Oliveira" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover;" onerror="this.outerHTML='<svg viewBox=\'0 0 24 24\'><path d=\'M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20\' stroke-linecap=\'round\' stroke-linejoin=\'round\'></path><path d=\'M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z\' stroke-linecap=\'round\' stroke-linejoin=\'round\'></path></svg>'">
+                        <span>William de Oliveira<br><span style="font-size: 0.85em; font-weight: 400; color: var(--text-muted);">CRP 05/78816</span></span>
                     </a>
                 </div>
             </div>
