@@ -13,17 +13,64 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-	<!-- Favicon -->
+<!-- Favicon -->
     <link rel="icon" type="image/png" href="media/favicon.png">
-	
+    
     <style>
+        @property --grad-angle {
+            syntax: '<angle>';
+            inherits: false;
+            initial-value: 0deg;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #300813 0%, #4A0B1E 50%, #5E1026 100%);
+            background: linear-gradient(var(--grad-angle), #0a010d, #4A0B1E, #8b1c1c, #1f0312, #6b1022);
+            background-size: 400% 400%;
+            animation: gradientBG 40s linear infinite;
             background-attachment: fixed;
             color: #F3F4F6;
             min-height: 100vh;
             overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { 
+                background-position: 0% 50%; 
+                --grad-angle: 0deg;
+            }
+            50% { 
+                background-position: 100% 50%; 
+                --grad-angle: 180deg;
+            }
+            100% { 
+                background-position: 0% 50%; 
+                --grad-angle: 360deg;
+            }
+        }
+
+        /* Animações para as esferas de luz do fundo */
+        .blob-animate-1 {
+            animation: moveBlob1 20s infinite alternate ease-in-out;
+        }
+        .blob-animate-2 {
+            animation: moveBlob2 25s infinite alternate ease-in-out;
+        }
+        .blob-animate-3 {
+            animation: moveBlob3 30s infinite alternate ease-in-out;
+        }
+
+        @keyframes moveBlob1 {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+            100% { transform: translate(50px, 50px) scale(1.2); opacity: 0.4; }
+        }
+        @keyframes moveBlob2 {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.1; }
+            100% { transform: translate(-50px, -30px) scale(1.3); opacity: 0.3; }
+        }
+        @keyframes moveBlob3 {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            100% { transform: translate(-45%, -55%) scale(1.1); opacity: 0.5; }
         }
 
         .glass-block {
@@ -109,14 +156,63 @@
             font-style: italic;
             color: #9ca3af;
         }
+
+        /* Estilo para as imagens dentro do bloco de conteúdo com altura máxima */
+        .content-block img {
+            border-radius: 0.75rem; /* Cantos ligeiramente arredondados */
+            margin-bottom: 1.25rem; /* Espaçamento igual ao dos parágrafos */
+            width: 100%; /* Garante que a imagem preencha a largura */
+            max-height: 200px; /* Altura máxima de 200px */
+            object-fit: cover; /* Evita que a imagem fique distorcida ao limitar a altura */
+        }
+
+        /* Wrapper dinâmico para a imagem e o tooltip */
+        .img-wrapper {
+            position: relative;
+            display: block;
+            width: 100%;
+            margin-bottom: 1.25rem;
+        }
+        .img-wrapper img {
+            margin-bottom: 0; /* A margem vai para o wrapper agora */
+        }
+
+        /* Estilo do Tooltip (Legenda da Imagem) */
+        .img-tooltip {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(48, 8, 19, 0.85); /* Tom avermelhado escuro do tema */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #F3F4F6;
+            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            opacity: 0;
+            pointer-events: none; /* Para o mouse não interferir no hover */
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            white-space: nowrap;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        /* Animação ao passar o mouse na imagem */
+        .img-wrapper:hover .img-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
     </style>
 </head>
 <body class="antialiased relative selection:bg-[#FF2A2A] selection:text-white">
 
     <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-        <div class="absolute top-[5%] left-[5%] w-[30rem] h-[30rem] rounded-full bg-[#8A1538] mix-blend-screen filter blur-[100px] opacity-30"></div>
-        <div class="absolute bottom-[10%] right-[5%] w-[40rem] h-[40rem] rounded-full bg-[#FF2A2A] mix-blend-screen filter blur-[150px] opacity-10"></div>
-        <div class="absolute top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] rounded-full bg-[#300813] mix-blend-multiply filter blur-[100px] opacity-50"></div>
+        <div class="absolute top-[5%] left-[5%] w-[30rem] h-[30rem] rounded-full bg-[#8A1538] mix-blend-screen filter blur-[100px] blob-animate-1"></div>
+        <div class="absolute bottom-[10%] right-[5%] w-[40rem] h-[40rem] rounded-full bg-[#FF2A2A] mix-blend-screen filter blur-[150px] blob-animate-2"></div>
+        <div class="absolute top-[50%] left-[50%] w-[50rem] h-[50rem] rounded-full bg-[#300813] mix-blend-multiply filter blur-[100px] blob-animate-3"></div>
     </div>
 
     <header class="w-full max-w-3xl mx-auto px-6 py-12">
@@ -125,20 +221,17 @@
         </h1>
     </header>
 
-
-
-
-
-
     <main class="w-full max-w-3xl mx-auto px-6 pb-24 flex flex-col gap-12">
         
-		
         <article class="glass-block rounded-2xl p-6 md:p-10 border-l-4 border-l-red-accent">
             <time class="block text-red-accent text-xs font-semibold tracking-widest uppercase mb-6">
                 30 de Agosto, 2026 &mdash; 08h25
             </time>
             <div class="content-block">
-                <h1 id="tudo-isso-tnm">Tudo isso é TNM</h1>
+                <h2 id="tudo-isso-tnm">Tudo isso é TNM</h2>
+                
+                <img src="https://images.unsplash.com/photo-1601903060992-09a591e36f1c?q=80&w=1456&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto de Ignacio Amenábar na Unsplash">
+
 <p>Sinto que preciso desaparecer. Morrer, eu acho, seria a coisa mais próxima ao que eu sinto que preciso fazer. </p>
 <p>Não vou morrer, não antes da hora, não antes deles virem me buscar. </p>
 <p>Mas imagina o silêncio, por um minuto, o silêncio que a não existência pode me proporcionar? Não seria legal não estar mais aqui pra não precisar lidar com isso tudo? Não precisar lidar com a dor e as sensações da carne que me arranham, que me consomem, que me fazem lembrar que eu inteira sou apodrecida até o fundo da minha carne? </p>
@@ -149,8 +242,8 @@
 <p>Traga a picareta de gelo, por favor.</p>
 
             </div>
-        </article>		
-		
+        </article>      
+        
         <!-- Bloco 1: Exemplo com Formatação -->
         <article class="glass-block rounded-2xl p-6 md:p-10 border-l-4 border-l-red-accent">
             <time class="block text-red-accent text-xs font-semibold tracking-widest uppercase mb-6">
@@ -158,15 +251,17 @@
             </time>
             <div class="content-block">
                 <h2>Começando um blog esquisito aqui :)</h2>
+				
+				<img src="https://images.unsplash.com/photo-1710580889701-9fa8f2cd5927?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto de engin akyurt na Unsplash">
                 <p>
                 Meu corpo inteiro foi resetado. Meu corpo, minha mente, minha alma, minha morte. Tudo resetou.
-				<br>
-				Na minha angústia de querer estar viva, não consegui perceber que, de fato, já estava viva.
-				</p><p>
-				Havia tanto tempo que eu estava tentando entender o que estava acontecendo, que no turbilhão eu me perdi no campo das possibilidades infinitas. Corri pro passado, pra algum lugar confortável de se estar. E fiquei lá. Tonta. Presa. Tentando me agarrar nas coisas que jamais vivi ou viveria.
+                <br>
+                Na minha angústia de querer estar viva, não consegui perceber que, de fato, já estava viva.
                 </p><p>
-				Tonta. Completamente esquecida de quem eu deveria ser, quem eu sempre fui, quem eu estava sendo, quem eu estava construindo. De quem eu nasci sendo pra ser quem eu sou e quero ser! 
-				</p>
+                Havia tanto tempo que eu estava tentando entender o que estava acontecendo, que no turbilhão eu me perdi no campo das possibilidades infinitas. Corri pro passado, pra algum lugar confortável de se estar. E fiquei lá. Tonta. Presa. Tentando me agarrar nas coisas que jamais vivi ou viveria.
+                </p><p>
+                Tonta. Completamente esquecida de quem eu deveria ser, quem eu sempre fui, quem eu estava sendo, quem eu estava construindo. De quem eu nasci sendo pra ser quem eu sou e quero ser! 
+                </p>
                 
                 <p>
                     Eu deixei de morrer, acho que pela quarta ou quinta vez.
@@ -176,5 +271,34 @@
 
     </main>
 
+    <!-- Script para adicionar as legendas (alt) dinamicamente nas imagens -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Seleciona todas as imagens dentro dos blocos de conteúdo
+            const images = document.querySelectorAll('.content-block img');
+            
+            images.forEach(img => {
+                const altText = img.getAttribute('alt');
+                
+                // Só cria o efeito se a imagem tiver o atributo 'alt' preenchido
+                if (altText) {
+                    // Cria uma div para envolver a imagem
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'img-wrapper';
+                    
+                    // Coloca o wrapper antes da imagem e move a imagem para dentro dele
+                    img.parentNode.insertBefore(wrapper, img);
+                    wrapper.appendChild(img);
+                    
+                    // Cria e adiciona a legenda (tooltip flutuante)
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'img-tooltip';
+                    tooltip.textContent = altText;
+                    
+                    wrapper.appendChild(tooltip);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

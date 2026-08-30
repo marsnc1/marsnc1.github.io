@@ -26,17 +26,27 @@
             --border-hover: rgba(186, 244, 132, 0.5);
         }
 
+        /* --- CONFIGURAÇÃO DO GRADIENTE ANIMADO --- */
+        @property --grad-angle {
+            syntax: '<angle>';
+            inherits: false;
+            initial-value: 0deg;
+        }
+
         /* --- ESTILOS GERAIS --- */
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 3rem 1.5rem;
+            
+            /* Fundo com a imagem reativada */
             background-color: var(--bg-color);
-            color: var(--text-color);
             background-image: url("arte/fundo.png");
             background-size: 1200px;
             background-position: center;
             background-attachment: fixed;
+            
+            color: var(--text-color);
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -45,14 +55,33 @@
             position: relative;
         }
 
-        /* Animação suave do fundo escuro */
+        /* Animação do Background com gradiente translúcido sobreposto à imagem */
         body::before {
             content: '';
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at top left, rgba(186, 244, 132, 0.05), transparent 40%),
-                        radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.02), transparent 40%);
+            
+            /* Gradiente animado com leve transparência (opacity nas cores/camada) */
+            background: linear-gradient(var(--grad-angle), rgba(5, 5, 5, 0.85), rgba(17, 26, 17, 0.8), rgba(0, 0, 0, 0.85), rgba(23, 38, 21, 0.8), rgba(8, 13, 10, 0.85));
+            background-size: 400% 400%;
+            animation: gradientBG 40s linear infinite;
             z-index: -1;
+        }
+
+        /* Animação do Background */
+        @keyframes gradientBG {
+            0% { 
+                background-position: 0% 50%; 
+                --grad-angle: 0deg;
+            }
+            50% { 
+                background-position: 100% 50%; 
+                --grad-angle: 180deg;
+            }
+            100% { 
+                background-position: 0% 50%; 
+                --grad-angle: 360deg;
+            }
         }
 
         .container {
@@ -219,16 +248,15 @@
         }
 
         .links-grid.two-columns {
-            /* Aumentado de 140px para 260px para os botões ficarem mais largos */
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         }
 
         a.link-button {
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Alinhado à esquerda para organizar os nomes longos */
+            justify-content: flex-start;
             gap: 1rem;
-            padding: 1rem 1.5rem; /* Mais espaçamento interno nas laterais */
+            padding: 1rem 1.5rem;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -288,7 +316,7 @@
         
         <!-- CABEÇALHO -->
         <header class="profile-header">
-            <img src="media/eu.png" alt="Foto de Perfil de Marte Chagas" class="avatar">
+            <img src="media/eu.png" alt="Foto de Perfil de Marte Chagas" class="avatar" onerror="this.src='https://placehold.co/130x130/191919/BAF484?text=MC'">
             <h1>Marte Nascimento Chagas</h1>
             <p>Psicóloga - CRP 05/77098</p>
         </header>
@@ -397,11 +425,11 @@
 
             <!-- Card 6 e 7: Imagens (Artes) -->
             <div class="card image-card">
-                <img src="arte/grude.jpg" alt="Pintura abstrata 1">
+                <img src="arte/grude.jpg" alt="Pintura abstrata 1" onerror="this.src='https://placehold.co/400x300/191919/BAF484?text=Arte+1'">
             </div>
             
             <div class="card image-card">
-                <img src="arte/-144.png" alt="Pintura abstrata 2">
+                <img src="arte/-144.png" alt="Pintura abstrata 2" onerror="this.src='https://placehold.co/400x300/191919/BAF484?text=Arte+2'">
             </div>
 
         </main>
