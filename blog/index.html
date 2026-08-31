@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -13,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-<!-- Favicon -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="media/favicon.png">
     
     <style>
@@ -23,15 +24,25 @@
             initial-value: 0deg;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
+        .fixed-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
             background: linear-gradient(var(--grad-angle), #0a010d, #4A0B1E, #8b1c1c, #1f0312, #6b1022);
             background-size: 400% 400%;
             animation: gradientBG 40s linear infinite;
-            background-attachment: fixed;
+            will-change: background-position, --grad-angle;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
             color: #F3F4F6;
             min-height: 100vh;
             overflow-x: hidden;
+            background-color: #0a010d;
         }
 
         @keyframes gradientBG {
@@ -49,7 +60,6 @@
             }
         }
 
-        /* Animações para as esferas de luz do fundo */
         .blob-animate-1 {
             animation: moveBlob1 20s infinite alternate ease-in-out;
         }
@@ -84,18 +94,15 @@
         .text-red-accent { color: #FF2A2A; }
         .border-red-accent { border-color: #FF2A2A; }
         
-        /* Estilos base para blocos de conteúdo */
         .content-block {
-            color: #e5e7eb; /* text-gray-200 */
-            font-size: 1.125rem; /* text-lg padrão em desktop */
+            color: #e5e7eb;
+            font-size: 1.125rem;
         }
         
-        /* Ajuste para mobile */
         @media (max-width: 768px) {
-            .content-block { font-size: 1rem; /* text-base */ }
+            .content-block { font-size: 1rem; }
         }
 
-        /* Formatação de Tags Internas do Conteúdo */
         .content-block p {
             margin-bottom: 1.25rem;
             line-height: 1.7;
@@ -157,16 +164,14 @@
             color: #9ca3af;
         }
 
-        /* Estilo para as imagens dentro do bloco de conteúdo com altura máxima */
         .content-block img {
-            border-radius: 0.75rem; /* Cantos ligeiramente arredondados */
-            margin-bottom: 1.25rem; /* Espaçamento igual ao dos parágrafos */
-            width: 100%; /* Garante que a imagem preencha a largura */
-            max-height: 200px; /* Altura máxima de 200px */
-            object-fit: cover; /* Evita que a imagem fique distorcida ao limitar a altura */
+            border-radius: 0.75rem;
+            margin-bottom: 1.25rem;
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
         }
 
-        /* Wrapper dinâmico para a imagem e o tooltip */
         .img-wrapper {
             position: relative;
             display: block;
@@ -174,16 +179,15 @@
             margin-bottom: 1.25rem;
         }
         .img-wrapper img {
-            margin-bottom: 0; /* A margem vai para o wrapper agora */
+            margin-bottom: 0;
         }
 
-        /* Estilo do Tooltip (Legenda da Imagem) */
         .img-tooltip {
             position: absolute;
             bottom: 1rem;
             left: 50%;
             transform: translateX(-50%) translateY(10px);
-            background: rgba(48, 8, 19, 0.85); /* Tom avermelhado escuro do tema */
+            background: rgba(48, 8, 19, 0.85);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             color: #F3F4F6;
@@ -192,7 +196,7 @@
             padding: 0.5rem 1rem;
             border-radius: 9999px;
             opacity: 0;
-            pointer-events: none; /* Para o mouse não interferir no hover */
+            pointer-events: none;
             transition: opacity 0.3s ease, transform 0.3s ease;
             white-space: nowrap;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -200,7 +204,6 @@
             z-index: 10;
         }
 
-        /* Animação ao passar o mouse na imagem */
         .img-wrapper:hover .img-tooltip {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
@@ -208,6 +211,8 @@
     </style>
 </head>
 <body class="antialiased relative selection:bg-[#FF2A2A] selection:text-white">
+
+    <div class="fixed-bg"></div>
 
     <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
         <div class="absolute top-[5%] left-[5%] w-[30rem] h-[30rem] rounded-full bg-[#8A1538] mix-blend-screen filter blur-[100px] blob-animate-1"></div>
@@ -221,84 +226,95 @@
         </h1>
     </header>
 
-    <main class="w-full max-w-3xl mx-auto px-6 pb-24 flex flex-col gap-12">
-        
-        <article class="glass-block rounded-2xl p-6 md:p-10 border-l-4 border-l-red-accent">
-            <time class="block text-red-accent text-xs font-semibold tracking-widest uppercase mb-6">
-                30 de Agosto, 2026 &mdash; 08h25
-            </time>
-            <div class="content-block">
-                <h2 id="tudo-isso-tnm">Tudo isso é TNM</h2>
-                
-                <img src="https://images.unsplash.com/photo-1601903060992-09a591e36f1c?q=80&w=1456&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto de Ignacio Amenábar na Unsplash">
-
-<p>Sinto que preciso desaparecer. Morrer, eu acho, seria a coisa mais próxima ao que eu sinto que preciso fazer. </p>
-<p>Não vou morrer, não antes da hora, não antes deles virem me buscar. </p>
-<p>Mas imagina o silêncio, por um minuto, o silêncio que a não existência pode me proporcionar? Não seria legal não estar mais aqui pra não precisar lidar com isso tudo? Não precisar lidar com a dor e as sensações da carne que me arranham, que me consomem, que me fazem lembrar que eu inteira sou apodrecida até o fundo da minha carne? </p>
-<p>Eu preciso não estar mais aqui. Minha carne fere demais, me incomoda demais. É cheia de anseios, de sensações... Sinto um aperto na garganta me dizendo pra pegar uma faca e arrancar meu corpo de mim mesma... Existir é terrível. Ter um corpo é tenebroso. </p>
-<p>A garganta fechada, não me deixa falar. Empurra as lágrimas pra fora, mas no meio do caminho os olhos secam. Nem o prazer de um pranto eu mereço? Queria chorar de soluçar, pra poder sentir alguma coisa. Sentir que eu ainda estou aqui e que existo. Quero sair correndo, quero fazer com que meu corpo pegue fogo de tanta dor, </p>
-<p>Eu preciso da dor pra estar viva. Se não sei o que sinto, o que sou, o que quero, pelo menos sei que a dor é inegavelmente uma coisa terrível. Isso eu sei nomear. As marcas na minha carne sinalizando o óbvio. Que eu não presto. Quê não mereço carinho, que mereço desaparecer. </p>
-<p>Mas... Como conectar isso ao fato de que está tudo indo bem?</p>
-<p>Traga a picareta de gelo, por favor.</p>
-
-            </div>
-        </article>      
-        
-        <!-- Bloco 1: Exemplo com Formatação -->
-        <article class="glass-block rounded-2xl p-6 md:p-10 border-l-4 border-l-red-accent">
-            <time class="block text-red-accent text-xs font-semibold tracking-widest uppercase mb-6">
-                29 de Agosto, 2026 &mdash; 01h01
-            </time>
-            <div class="content-block">
-                <h2>Começando um blog esquisito aqui :)</h2>
-				
-				<img src="https://images.unsplash.com/photo-1710580889701-9fa8f2cd5927?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto de engin akyurt na Unsplash">
-                <p>
-                Meu corpo inteiro foi resetado. Meu corpo, minha mente, minha alma, minha morte. Tudo resetou.
-                <br>
-                Na minha angústia de querer estar viva, não consegui perceber que, de fato, já estava viva.
-                </p><p>
-                Havia tanto tempo que eu estava tentando entender o que estava acontecendo, que no turbilhão eu me perdi no campo das possibilidades infinitas. Corri pro passado, pra algum lugar confortável de se estar. E fiquei lá. Tonta. Presa. Tentando me agarrar nas coisas que jamais vivi ou viveria.
-                </p><p>
-                Tonta. Completamente esquecida de quem eu deveria ser, quem eu sempre fui, quem eu estava sendo, quem eu estava construindo. De quem eu nasci sendo pra ser quem eu sou e quero ser! 
-                </p>
-                
-                <p>
-                    Eu deixei de morrer, acho que pela quarta ou quinta vez.
-                </p>
-            </div>
-        </article>
-
+    <!-- Onde os posts injetados pelo script serão exibidos -->
+    <main id="posts-container" class="w-full max-w-3xl mx-auto px-6 pb-24 flex flex-col gap-12">
     </main>
 
-    <!-- Script para adicionar as legendas (alt) dinamicamente nas imagens -->
     <script>
+        // -------------------------------------------------------------------------
+        // BANCO DE DADOS DE POSTS
+        // Para adicionar novos posts pelo celular, basta acrescentar um novo bloco 
+        // abaixo seguindo o mesmo formato.
+        // -------------------------------------------------------------------------
+        const postsData = [
+            {
+                date: "30 de Agosto, 2026 &mdash; 08h25",
+                image: {
+                    url: "https://images.unsplash.com/photo-1601903060992-09a591e36f1c?q=80&w=1456&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    alt: "Foto de Ignacio Amenábar na Unsplash"
+                },
+                content: `
+                    <h2 id="tudo-isso-tnm">Tudo isso é TNM</h2>
+                    <p>Sinto que preciso desaparecer. Morrer, eu acho, seria a coisa mais próxima ao que eu sinto que preciso fazer.</p>
+                    <p>Não vou morrer, não antes da hora, não antes deles virem me buscar.</p>
+                    <p>Mas imagina o silêncio, por um minuto, o silêncio que a não existência pode me proporcionar? Não seria legal não estar mais aqui pra não precisar lidar com isso tudo? Não precisar lidar com a dor e as sensações da carne que me arranham, que me consomem, que me fazem lembrar que eu inteira sou apodrecida até o fundo da minha carne?</p>
+                    <p>Eu preciso não estar mais aqui. Minha carne fere demais, me incomoda demais. É cheia de anseios, de sensações... Sinto um aperto na garganta me dizendo pra pegar uma faca e arrancar meu corpo de mim mesma... Existir é terrível. Ter um corpo é tenebroso.</p>
+                    <p>A garganta fechada, não me deixa falar. Empurra as lágrimas pra fora, mas no meio do caminho os olhos secam. Nem o prazer de um pranto eu mereço? Queria chorar de soluçar, pra poder sentir alguma coisa. Sentir que eu ainda estou aqui e que existo. Quero sair correndo, quero fazer com que meu corpo pegue fogo de tanta dor,</p>
+                    <p>Eu preciso da dor pra estar viva. Se não sei o que sinto, o que sou, o que quero, pelo menos sei que a dor é inegavelmente uma coisa terrível. Isso eu sei nomear. As marcas na minha carne sinalizando o óbvio. Que eu não presto. Quê não mereço carinho, que mereço desaparecer.</p>
+                    <p>Mas... Como conectar isso ao fato de que está tudo indo bem?</p>
+                    <p>Traga a picareta de gelo, por favor.</p>
+                `
+            },
+            {
+                date: "29 de Agosto, 2026 &mdash; 01h01",
+                image: {
+                    url: "https://images.unsplash.com/photo-1710580889701-9fa8f2cd5927?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    alt: "Foto de engin akyurt na Unsplash"
+                },
+                content: `
+                    <h2>Começando um blog esquisito aqui :)</h2>
+                    <p>
+                    Meu corpo inteiro foi resetado. Meu corpo, minha mente, minha alma, minha morte. Tudo resetou.
+                    <br>
+                    Na minha angústia de querer estar viva, não consegui perceber que, de fato, já estava viva.
+                    </p>
+                    <p>
+                    Havia tanto tempo que eu estava tentando entender o que estava acontecendo, que no turbilhão eu me perdi no campo das possibilidades infinitas. Corri pro passado, pra algum lugar confortável de se estar. E fiquei lá. Tonta. Presa. Tentando me agarrar nas coisas que jamais vivi ou viveria.
+                    </p>
+                    <p>
+                    Tonta. Completamente esquecida de quem eu deveria ser, quem eu sempre fui, quem eu estava sendo, quem eu estava construindo. De quem eu nasci sendo pra ser quem eu sou e quero ser! 
+                    </p>
+                    <p>
+                        Eu deixei de morrer, acho que pela quarta ou quinta vez.
+                    </p>
+                `
+            }
+        ];
+
+        // -------------------------------------------------------------------------
+        // RENDERIZAÇÃO AUTOMÁTICA DOS POSTS E TOOLTIPS
+        // -------------------------------------------------------------------------
         document.addEventListener('DOMContentLoaded', () => {
-            // Seleciona todas as imagens dentro dos blocos de conteúdo
-            const images = document.querySelectorAll('.content-block img');
+            const container = document.getElementById('posts-container');
             
-            images.forEach(img => {
-                const altText = img.getAttribute('alt');
+            postsData.forEach(post => {
+                const article = document.createElement('article');
+                article.className = 'glass-block rounded-2xl p-6 md:p-10 border-l-4 border-l-red-accent';
                 
-                // Só cria o efeito se a imagem tiver o atributo 'alt' preenchido
-                if (altText) {
-                    // Cria uma div para envolver a imagem
-                    const wrapper = document.createElement('div');
-                    wrapper.className = 'img-wrapper';
-                    
-                    // Coloca o wrapper antes da imagem e move a imagem para dentro dele
-                    img.parentNode.insertBefore(wrapper, img);
-                    wrapper.appendChild(img);
-                    
-                    // Cria e adiciona a legenda (tooltip flutuante)
-                    const tooltip = document.createElement('div');
-                    tooltip.className = 'img-tooltip';
-                    tooltip.textContent = altText;
-                    
-                    wrapper.appendChild(tooltip);
+                let imageHtml = '';
+                if (post.image && post.image.url) {
+                    imageHtml = `
+                        <div class="img-wrapper">
+                            <img src="${post.image.url}" alt="${post.image.alt || ''}">
+                            ${post.image.alt ? `<div class="img-tooltip">${post.image.alt}</div>` : ''}
+                        </div>
+                    `;
                 }
+
+                article.innerHTML = `
+                    <time class="block text-red-accent text-xs font-semibold tracking-widest uppercase mb-6">
+                        ${post.date}
+                    </time>
+                    <div class="content-block">
+                        ${imageHtml}
+                        ${post.content}
+                    </div>
+                `;
+                
+                container.appendChild(article);
             });
         });
     </script>
 </body>
 </html>
+```
