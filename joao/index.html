@@ -1,294 +1,319 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-PT" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Psicólogo Clínico | Atendimento Psicoterapêutico</title>
+    <title>João Cortez | Psicólogo Clínico</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Configuração de Cores Personalizadas -->
+    <!-- Configuração do Tailwind -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            purple: '#5B3A70',  /* Roxo principal */
-                            teal: '#2F6D73',    /* Azul petróleo */
-                            gold: '#B89B5E',    /* Dourado fosco */
-                            light: '#F2EEE8',   /* Off-white elegante */
+                            purple: '#5B3A70', /* Roxo principal */
+                            teal: '#2F6D73',   /* Azul petróleo */
+                            gold: '#B89B5E',   /* Dourado fosco */
+                            light: '#F2EEE8',  /* Off-white elegante */
                         }
                     },
                     fontFamily: {
                         sans: ['Montserrat', 'sans-serif'],
-                        serif: ['Lora', 'serif'],
+                        serif: ['Playfair Display', 'serif'],
                     }
                 }
             }
         }
     </script>
+    
     <style>
         body {
             background-color: #F2EEE8;
             color: #333333;
+            overflow-x: hidden;
         }
+        
+        /* Botões customizados */
         .btn-gold {
             background-color: #B89B5E;
             color: #FFFFFF;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-        .btn-gold:hover {
+        .btn-gold::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
             background-color: #9c834f;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
         }
-        .btn-outline-purple {
-            border: 2px solid #5B3A70;
-            color: #5B3A70;
-            transition: all 0.3s ease;
+        .btn-gold:hover::before {
+            transform: scaleX(1);
         }
-        .btn-outline-purple:hover {
+
+        /* Formas Orgânicas (Blob) inspiradas nas artes */
+        .blob-purple {
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
             background-color: #5B3A70;
-            color: #F2EEE8;
+            animation: morph 8s ease-in-out infinite;
         }
-        .card-service {
-            transition: all 0.3s ease;
+        .blob-teal {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            background-color: #2F6D73;
+            animation: morph 10s ease-in-out infinite reverse;
         }
-        .card-service:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(91, 58, 112, 0.1), 0 4px 6px -2px rgba(91, 58, 112, 0.05);
+
+        @keyframes morph {
+            0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+            67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+        }
+
+        /* Elemento de linha dourada fina */
+        .gold-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #B89B5E, transparent);
+        }
+
+        /* Padrão de textura sutil */
+        .texture-overlay {
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
         }
     </style>
 </head>
-<body class="font-sans antialiased flex flex-col min-h-screen">
+<body class="font-sans antialiased relative">
+    
+    <div class="texture-overlay"></div>
+
+    <!-- Padrão de Pontos SVG (Canto superior esquerdo) -->
+    <div class="absolute top-8 left-8 hidden md:block opacity-60 z-0">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="2" cy="2" r="1.5" fill="#B89B5E"/> <circle cx="14" cy="2" r="1.5" fill="#B89B5E"/> <circle cx="26" cy="2" r="1.5" fill="#B89B5E"/> <circle cx="38" cy="2" r="1.5" fill="#B89B5E"/>
+            <circle cx="2" cy="14" r="1.5" fill="#B89B5E"/> <circle cx="14" cy="14" r="1.5" fill="#B89B5E"/> <circle cx="26" cy="14" r="1.5" fill="#B89B5E"/> <circle cx="38" cy="14" r="1.5" fill="#B89B5E"/>
+            <circle cx="2" cy="26" r="1.5" fill="#B89B5E"/> <circle cx="14" cy="26" r="1.5" fill="#B89B5E"/> <circle cx="26" cy="26" r="1.5" fill="#B89B5E"/> <circle cx="38" cy="26" r="1.5" fill="#B89B5E"/>
+            <circle cx="2" cy="38" r="1.5" fill="#B89B5E"/> <circle cx="14" cy="38" r="1.5" fill="#B89B5E"/> <circle cx="26" cy="38" r="1.5" fill="#B89B5E"/> <circle cx="38" cy="38" r="1.5" fill="#B89B5E"/>
+        </svg>
+    </div>
 
     <!-- Navegação -->
-    <header class="bg-brand-light shadow-sm sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
-                <div class="flex justify-start lg:w-0 lg:flex-1">
-                    <a href="#" class="font-serif text-2xl font-semibold text-brand-purple">
-                        Nome do Profissional
-                    </a>
+    <header class="relative z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center">
+                <!-- Logotipo e Assinatura -->
+                <div class="flex items-center space-x-4">
+                    <!-- Símbolo Psi -->
+                    <div class="w-12 h-12 rounded-full border border-brand-gold flex items-center justify-center bg-transparent">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22V6M12 6C12 6 12 2 12 2M12 6C12 10.5 8 13.5 4 13.5V4M12 6C12 10.5 16 13.5 20 13.5V4M8 22H16" stroke="#B89B5E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col border-l border-brand-purple pl-4">
+                        <span class="font-serif font-semibold text-brand-purple tracking-widest uppercase text-sm">João Cortez</span>
+                        <span class="text-[10px] text-brand-teal uppercase tracking-widest">Psicólogo Clínico</span>
+                        <span class="text-[10px] text-brand-gold">CRP 05/76792</span>
+                    </div>
                 </div>
-                <nav class="hidden md:flex space-x-10">
-                    <a href="#sobre" class="text-base font-medium text-gray-700 hover:text-brand-purple transition-colors">Sobre</a>
-                    <a href="#especialidades" class="text-base font-medium text-gray-700 hover:text-brand-purple transition-colors">Especialidades</a>
-                    <a href="#abordagem" class="text-base font-medium text-gray-700 hover:text-brand-purple transition-colors">Abordagem</a>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors">Início</a>
+                    <a href="#abordagem" class="text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors">Abordagem</a>
+                    <a href="#contato" class="text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors">Contacto</a>
                 </nav>
-                <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                    <a href="#contato" class="btn-gold whitespace-nowrap inline-flex items-center justify-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium">
-                        Agendar Consulta
-                    </a>
-                </div>
-                <!-- Menu Mobile (Simplificado) -->
-                <div class="md:hidden flex items-center">
-                    <a href="#contato" class="text-brand-purple font-medium">Agendar</a>
-                </div>
             </div>
         </div>
     </header>
 
-    <!-- Seção Hero -->
-    <main class="flex-grow">
-        <section class="relative pt-16 pb-20 lg:pt-24 lg:pb-28 overflow-hidden">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                <h1 class="text-4xl tracking-tight font-serif font-semibold text-brand-purple sm:text-5xl md:text-6xl mb-6">
-                    Um espaço seguro para <br class="hidden md:block" /> o seu autoconhecimento
-                </h1>
-                <p class="mt-3 max-w-md mx-auto text-lg text-gray-600 sm:text-xl md:mt-5 md:max-w-2xl font-light">
-                    Atendimento psicológico especializado focado no seu bem-estar emocional e desenvolvimento pessoal. A terapia é o primeiro passo para uma vida mais equilibrada.
-                </p>
-                <div class="mt-10 flex justify-center gap-4">
-                    <a href="#contato" class="btn-gold px-8 py-3 rounded-md text-lg font-medium">
-                        Iniciar Terapia
-                    </a>
-                    <a href="#sobre" class="btn-outline-purple px-8 py-3 rounded-md text-lg font-medium bg-transparent">
-                        Conhecer o Profissional
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Elemento Decorativo -->
-            <div class="absolute top-0 right-0 -mr-20 -mt-20 opacity-10 pointer-events-none">
-                <svg width="404" height="404" fill="none" viewBox="0 0 404 404" aria-hidden="true">
-                    <defs>
-                        <pattern id="85737c0e-0916-41d7-917f-596dc7edfa27" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                            <rect x="0" y="0" width="4" height="4" fill="#5B3A70" />
-                        </pattern>
-                    </defs>
-                    <rect width="404" height="404" fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)" />
-                </svg>
-            </div>
-        </section>
-
-        <!-- Seção Sobre -->
-        <section id="sobre" class="py-16 bg-white border-y border-brand-light">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-                    <div class="mb-10 lg:mb-0 rounded-lg overflow-hidden shadow-lg border border-brand-light">
-                        <!-- Imagem Placeholder. Recomenda-se inserir foto profissional -->
-                        <div class="w-full h-96 bg-gray-200 flex items-center justify-center text-gray-400 relative">
-                            <div class="absolute inset-0 bg-brand-purple opacity-5 mix-blend-multiply"></div>
-                            <span class="text-sm uppercase tracking-widest">[ Fotografia do Profissional ]</span>
+    <!-- Seção Hero (Inspirada nas composições de imagens) -->
+    <main>
+        <section id="inicio" class="relative pt-10 pb-20 lg:pt-20 lg:pb-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+                    
+                    <!-- Texto -->
+                    <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+                        <div class="inline-flex items-center space-x-2 mb-6">
+                            <span class="h-[1px] w-8 bg-brand-gold"></span>
+                            <span class="text-brand-gold text-sm uppercase tracking-widest font-medium">Psicoterapia</span>
                         </div>
-                    </div>
-                    <div>
-                        <h2 class="text-sm font-semibold text-brand-teal tracking-wide uppercase mb-2">Sobre o Profissional</h2>
-                        <h3 class="text-3xl font-serif text-brand-purple mb-6">Nome do Psicólogo, CRP 00/00000</h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed text-justify">
-                            Com experiência clínica em psicoterapia, o foco do trabalho é proporcionar um ambiente ético e acolhedor, onde o paciente possa expressar suas questões sem julgamentos. 
+                        <h1 class="text-4xl tracking-tight font-serif font-normal text-brand-purple sm:text-5xl md:text-6xl lg:leading-tight">
+                            Algumas mudanças começam quando se permite <br>
+                            <span class="text-brand-gold italic">atravessar a porta.</span>
+                        </h1>
+                        <p class="mt-6 text-base text-gray-600 sm:text-lg lg:text-xl font-light leading-relaxed">
+                            A terapia não é um sinal de fraqueza, mas sim o corpo e a mente a pedirem um tempo. Um espaço seguro para acolher histórias, compreender emoções e reencontrar o seu caminho.
                         </p>
-                        <p class="text-gray-600 mb-6 leading-relaxed text-justify">
-                            Acredito firmemente que a saúde mental é o pilar central da qualidade de vida. Através de um processo colaborativo, busco auxiliar indivíduos a compreenderem seus padrões de pensamento, gerenciar emoções e desenvolver resiliência frente aos desafios cotidianos.
-                        </p>
-                        <ul class="space-y-3 text-gray-600 mb-8">
-                            <li class="flex items-start">
-                                <svg class="h-6 w-6 text-brand-gold mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                <span>Graduação em Psicologia pela Instituição X</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="h-6 w-6 text-brand-gold mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                <span>Especialização na Abordagem Y</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção Especialidades -->
-        <section id="especialidades" class="py-20 bg-brand-light">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-base font-semibold text-brand-teal tracking-wide uppercase">Áreas de Atuação</h2>
-                    <p class="mt-2 text-3xl leading-8 font-serif font-semibold tracking-tight text-brand-purple sm:text-4xl">
-                        Especialidades Clínicas
-                    </p>
-                    <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
-                        Foco no tratamento e acompanhamento de diversas demandas psicológicas.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Card 1 -->
-                    <div class="card-service bg-white p-8 rounded-xl border border-gray-100 flex flex-col items-center text-center">
-                        <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-brand-light text-brand-teal mb-5">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        <div class="mt-10 sm:flex sm:justify-center lg:justify-start">
+                            <a href="#contato" class="btn-gold px-8 py-4 uppercase tracking-widest text-sm font-semibold rounded-none shadow-sm flex items-center justify-center">
+                                Agendar Consulta
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
                         </div>
-                        <h3 class="text-xl font-serif text-brand-purple font-medium mb-3">Ansiedade e Estresse</h3>
-                        <p class="text-gray-500 font-light">Manejo de crises, transtorno de ansiedade generalizada e ferramentas para lidar com a pressão do cotidiano.</p>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="card-service bg-white p-8 rounded-xl border border-gray-100 flex flex-col items-center text-center">
-                        <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-brand-light text-brand-teal mb-5">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-serif text-brand-purple font-medium mb-3">Depressão</h3>
-                        <p class="text-gray-500 font-light">Acompanhamento terapêutico para quadros depressivos, buscando resgatar a vitalidade e o sentido da vida.</p>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="card-service bg-white p-8 rounded-xl border border-gray-100 flex flex-col items-center text-center">
-                        <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-brand-light text-brand-teal mb-5">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-serif text-brand-purple font-medium mb-3">Conflitos de Relacionamento</h3>
-                        <p class="text-gray-500 font-light">Intervenções para melhora da comunicação, limites saudáveis e resolução de conflitos familiares ou conjugais.</p>
                     </div>
                     
-                    <!-- Card 4 -->
-                    <div class="card-service bg-white p-8 rounded-xl border border-gray-100 flex flex-col items-center text-center">
-                        <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-brand-light text-brand-teal mb-5">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    <!-- Composição Visual Orgânica -->
+                    <div class="mt-16 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center lg:justify-center h-[500px]">
+                        <!-- Formas de fundo -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="blob-teal w-72 h-72 lg:w-96 lg:h-96 absolute opacity-90 transform translate-x-10 -translate-y-10 mix-blend-multiply"></div>
+                            <div class="blob-purple w-80 h-80 lg:w-[26rem] lg:h-[26rem] absolute opacity-95"></div>
+                            
+                            <!-- Detalhe dourado (simulando a textura de pincelada) -->
+                            <div class="absolute w-full h-full" style="background: radial-gradient(circle at 80% 20%, #B89B5E 0%, transparent 20%); opacity: 0.4; mix-blend-color-dodge;"></div>
+                            
+                            <!-- Imagem Representativa (Espaço para arte do cliente) -->
+                            <div class="relative z-10 w-64 h-80 lg:w-80 lg:h-96 border-l border-b border-brand-gold p-4">
+                                <div class="w-full h-full bg-brand-light relative overflow-hidden flex items-center justify-center">
+                                    <div class="text-brand-purple text-center p-6 border border-brand-purple/20 h-full w-full flex flex-col justify-center items-center">
+                                         <svg class="w-12 h-12 text-brand-gold mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                        <span class="font-serif italic text-lg">[ Espaço para Arte/Fotografia ]</span>
+                                    </div>
+                                    <!-- Ramo Decorativo SVG (Simulando a folhagem das artes) -->
+                                    <svg class="absolute -bottom-6 -left-6 w-32 h-32 text-brand-teal opacity-80" viewBox="0 0 100 100" fill="currentColor">
+                                        <path d="M10,90 Q30,60 70,20 Q60,40 80,60 Q50,70 10,90 Z" />
+                                        <path d="M20,80 Q40,50 60,30 Q50,45 70,55 Q45,65 20,80 Z" fill="#B89B5E" />
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-serif text-brand-purple font-medium mb-3">Autoconhecimento</h3>
-                        <p class="text-gray-500 font-light">Processo focado no desenvolvimento pessoal, clareza de propósitos e fortalecimento da autoestima.</p>
-                    </div>
-
-                    <!-- Card 5 -->
-                    <div class="card-service bg-white p-8 rounded-xl border border-gray-100 flex flex-col items-center text-center">
-                        <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-brand-light text-brand-teal mb-5">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-serif text-brand-purple font-medium mb-3">Transição de Carreira</h3>
-                        <p class="text-gray-500 font-light">Orientação psicológica para momentos de mudança profissional, inseguranças e planejamento de metas.</p>
-                    </div>
-
-                    <!-- Card 6 -->
-                    <div class="card-service bg-white p-8 rounded-xl border border-gray-100 flex flex-col items-center text-center">
-                        <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-brand-light text-brand-teal mb-5">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-serif text-brand-purple font-medium mb-3">Luto e Perdas</h3>
-                        <p class="text-gray-500 font-light">Apoio emocional para elaboração do luto, separações e adaptação a novas realidades de vida.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA / Contato Section -->
-        <section id="contato" class="bg-brand-purple py-16 relative overflow-hidden">
-            <div class="absolute inset-0 opacity-10">
-                <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <pattern id="dot-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                            <circle cx="2" cy="2" r="1" fill="#FFFFFF"></circle>
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#dot-pattern)"></rect>
-                </svg>
+        <!-- Divisor Decorativo -->
+        <div class="gold-line w-full opacity-30"></div>
+
+        <!-- Seção Abordagem / Temas (Cards minimalistas) -->
+        <section id="abordagem" class="py-20 relative bg-brand-light">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-brand-teal uppercase tracking-widest text-sm font-semibold mb-3">Reflexões Clínicas</h2>
+                    <p class="font-serif text-3xl md:text-4xl text-brand-purple">O que os seus sintomas revelam sobre si?</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <!-- Tema 1 -->
+                    <div class="group relative bg-white p-8 border border-brand-purple/10 hover:border-brand-gold transition-colors duration-300">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B89B5E" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                        <h3 class="font-serif text-2xl text-brand-purple mb-4">Burnout</h3>
+                        <p class="text-gray-600 font-light text-sm leading-relaxed">
+                            Não é fraqueza. É o corpo e a mente a indicarem o limite. A exaustão profissional requer um olhar atento e compassivo para reestruturar as dinâmicas de trabalho e vida pessoal.
+                        </p>
+                    </div>
+
+                    <!-- Tema 2 -->
+                    <div class="group relative bg-white p-8 border border-brand-purple/10 hover:border-brand-gold transition-colors duration-300">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B89B5E" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                        <h3 class="font-serif text-2xl text-brand-purple mb-4">Afetividade</h3>
+                        <p class="text-gray-600 font-light text-sm leading-relaxed">
+                            É sobre permitir e saber receber o que nutre por inteiro. Explorar os padrões de relacionamento ajuda a construir vínculos mais saudáveis e a compreender as próprias necessidades emocionais.
+                        </p>
+                    </div>
+
+                    <!-- Tema 3 -->
+                    <div class="group relative bg-white p-8 border border-brand-purple/10 hover:border-brand-gold transition-colors duration-300">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B89B5E" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                        <h3 class="font-serif text-2xl text-brand-purple mb-4">Neurodiversidade</h3>
+                        <p class="text-gray-600 font-light text-sm leading-relaxed">
+                            Mente neurodivergente, possibilidades infinitas. Um acompanhamento focado na validação, compreensão do funcionamento singular e desenvolvimento de estratégias adaptativas.
+                        </p>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <!-- Seção Contato / Call to Action (Design em Roxo Profundo e Azul Petróleo) -->
+        <section id="contato" class="relative py-24 bg-brand-purple overflow-hidden">
+            <!-- Onda decorativa (Azul petróleo) -->
+            <div class="absolute bottom-0 left-0 w-full md:w-2/3 h-full bg-brand-teal rounded-tr-[100px] md:rounded-tr-[250px] z-0"></div>
             
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                <h2 class="text-3xl font-serif font-semibold text-brand-light sm:text-4xl mb-4">
-                    Pronto para dar o próximo passo?
-                </h2>
-                <p class="text-lg text-brand-light opacity-90 mb-8 max-w-2xl mx-auto font-light">
-                    Os atendimentos são realizados na modalidade online e presencial. Entre em contato para verificar disponibilidade de horários.
-                </p>
+            <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left flex flex-col md:flex-row items-center justify-between">
                 
-                <div class="bg-white rounded-xl shadow-xl p-8 max-w-md mx-auto text-left">
-                    <h3 class="text-xl font-serif text-brand-purple mb-4 text-center">Agendamento</h3>
-                    <p class="text-gray-600 mb-6 text-sm text-center">Clique no botão abaixo para ser direcionado ao WhatsApp da clínica e realizar seu agendamento de forma rápida.</p>
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="font-serif text-3xl md:text-5xl text-brand-light mb-6 leading-tight">
+                        Permita-se <span class="text-brand-gold italic">atravessar.</span>
+                    </h2>
+                    <p class="text-brand-light/80 font-light mb-8 max-w-md mx-auto md:mx-0">
+                        O primeiro passo para o autoconhecimento começa com o agendamento de uma sessão. Atendimento especializado.
+                    </p>
                     
-                    <a href="#" class="w-full btn-gold px-6 py-4 rounded-md font-medium text-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                        Falar no WhatsApp
-                    </a>
-                    
-                    <div class="text-sm text-gray-500 mt-4 space-y-2">
-                        <p class="flex items-center">
-                            <svg class="w-4 h-4 mr-2 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                            contato@email.com.br
-                        </p>
-                        <p class="flex items-center">
-                            <svg class="w-4 h-4 mr-2 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            Edifício Empresarial, Sala X - Cidade/UF
-                        </p>
-                    </div>
+                    <ul class="text-brand-light text-sm space-y-3 font-light mb-8 max-w-md mx-auto md:mx-0">
+                        <li class="flex items-center justify-center md:justify-start">
+                            <span class="text-brand-gold mr-3">✦</span> Escuta
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start">
+                            <span class="text-brand-gold mr-3">✦</span> Acolhimento
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start">
+                            <span class="text-brand-gold mr-3">✦</span> Compreensão
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start">
+                            <span class="text-brand-gold mr-3">✦</span> Transformação
+                        </li>
+                    </ul>
                 </div>
+
+                <div class="md:w-5/12 bg-brand-light p-8 md:p-12 relative shadow-2xl border-t-4 border-brand-gold">
+                    <div class="absolute top-4 right-4 opacity-30">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="2" cy="2" r="1" fill="#B89B5E"/> <circle cx="14" cy="2" r="1" fill="#B89B5E"/>
+                            <circle cx="2" cy="14" r="1" fill="#B89B5E"/> <circle cx="14" cy="14" r="1" fill="#B89B5E"/>
+                        </svg>
+                    </div>
+                    
+                    <h3 class="font-serif text-2xl text-brand-purple mb-6 text-center">Agendamento</h3>
+                    <p class="text-sm text-gray-600 mb-8 text-center font-light">
+                        Para informações sobre horários disponíveis e valores, entre em contacto via WhatsApp.
+                    </p>
+                    
+                    <a href="#" class="w-full bg-brand-purple text-brand-light px-6 py-4 flex items-center justify-center uppercase tracking-widest text-xs font-semibold hover:bg-brand-teal transition-colors">
+                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        Mensagem WhatsApp
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Assinatura Fundo -->
+            <div class="absolute top-10 right-10 opacity-5 pointer-events-none">
+                 <svg width="200" height="200" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 22V6M12 6C12 6 12 2 12 2M12 6C12 10.5 8 13.5 4 13.5V4M12 6C12 10.5 16 13.5 20 13.5V4M8 22H16" stroke="#F2EEE8" stroke-width="0.5"/>
+                </svg>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-brand-light py-8">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-4 md:mb-0">
-                <span class="font-serif text-xl font-semibold text-brand-purple">Nome do Profissional</span>
-                <p class="text-xs text-gray-500 mt-1">Psicologia Clínica | CRP 00/00000</p>
+    <!-- Rodapé -->
+    <footer class="bg-brand-purple border-t border-white/10 pt-8 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-brand-light/70 text-xs font-light tracking-wide">
+            <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                <span class="font-serif font-semibold text-brand-gold uppercase text-sm">João Cortez</span>
+                <span class="border-l border-brand-teal pl-3">Psicologia Clínica</span>
             </div>
-            <div class="text-sm text-gray-500">
-                &copy; 2026 Todos os direitos reservados.
+            <div>
+                &copy; 2026. Todos os direitos reservados.
             </div>
         </div>
     </footer>
