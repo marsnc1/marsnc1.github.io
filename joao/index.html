@@ -138,6 +138,7 @@
                 <nav class="hidden md:flex space-x-8">
                     <a href="#inicio" class="text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors">Início</a>
                     <a href="#abordagem" class="text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors">Abordagem</a>
+                    <a href="#video" class="text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors">Vídeo</a>
                     <a href="#contato" class="text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors">Contacto</a>
                 </nav>
 
@@ -154,6 +155,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-brand-light border-b border-brand-purple/10 px-4 pt-2 pb-6 space-y-3">
             <a href="#inicio" class="block text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors py-1">Início</a>
             <a href="#abordagem" class="block text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors py-1">Abordagem</a>
+            <a href="#video" class="block text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors py-1">Vídeo</a>
             <a href="#contato" class="block text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors py-1">Contacto</a>
         </div>
     </header>
@@ -195,10 +197,10 @@
                             <!-- Detalhe dourado (simulando a textura de pincelada) -->
                             <div class="absolute w-full h-full" style="background: radial-gradient(circle at 80% 20%, #B89B5E 0%, transparent 20%); opacity: 0.4; mix-blend-color-dodge;"></div>
                             
-                            <!-- Imagem Representativa com Ajuste de Foco Superior (object-top) -->
-                            <div class="w-full h-full bg-brand-light/40 backdrop-blur-[2px] relative overflow-hidden flex items-center justify-center rounded-2xl shadow-inner border border-brand-purple/10">
-                                <div class="text-brand-purple text-center p-2 h-full w-full flex flex-col justify-center items-center">
-                                    <img src="self.png" alt="João Cortez" width="600" height="600" class="w-full h-full object-cover object-top rounded" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80';">
+                            <!-- Imagem Representativa com Ajuste de Foco Superior e Padding para não cortar a cabeça -->
+                            <div class="w-full h-full bg-brand-light/40 backdrop-blur-[2px] relative overflow-hidden flex items-center justify-center rounded-2xl shadow-inner border border-brand-purple/10 pt-4">
+                                <div class="text-brand-purple text-center h-full w-full flex flex-col justify-end items-center">
+                                    <img src="self.png" alt="João Cortez" width="600" height="600" class="w-full h-full object-cover object-top rounded-b-2xl" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80';">
                                 </div>
                             </div>
                             
@@ -252,6 +254,35 @@
                             Mente neurodivergente, possibilidades infinitas. Um acompanhamento focado na validação, compreensão do funcionamento singular e desenvolvimento de estratégias adaptativas.
                         </p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divisor Decorativo -->
+        <div class="gold-line w-full opacity-30"></div>
+
+        <!-- Seção Vídeo -->
+        <section id="video" class="py-24 relative bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="mb-12">
+                    <span class="text-brand-gold text-sm uppercase tracking-widest font-medium">Conteúdo</span>
+                    <h2 class="font-serif text-3xl md:text-4xl text-brand-purple mt-2">Conheça um pouco mais do meu trabalho</h2>
+                    <p class="text-gray-600 mt-3 font-light max-w-xl mx-auto">
+                        Assista ao vídeo e entenda mais sobre a nossa abordagem terapêutica e o cuidado com a sua saúde mental.
+                    </p>
+                </div>
+                
+                <!-- Container Responsivo para o Iframe do YouTube -->
+                <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl border border-brand-purple/10 bg-brand-light">
+                    <iframe 
+                        class="absolute top-0 left-0 w-full h-full"
+                        src="https://www.youtube.com/embed/wcgTvjclAtU?si=07NldbBeY7Jy-cD2" 
+                        title="João Cortez - Psicólogo Clínico" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </section>
