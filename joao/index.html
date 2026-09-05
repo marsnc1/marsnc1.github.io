@@ -195,10 +195,10 @@
                             <!-- Detalhe dourado (simulando a textura de pincelada) -->
                             <div class="absolute w-full h-full" style="background: radial-gradient(circle at 80% 20%, #B89B5E 0%, transparent 20%); opacity: 0.4; mix-blend-color-dodge;"></div>
                             
-                            <!-- Imagem Representativa (Com tamanho e object-fit responsivos para evitar transbordamento) -->
+                            <!-- Imagem Representativa com Ajuste de Foco Superior (object-top) -->
                             <div class="w-full h-full bg-brand-light/40 backdrop-blur-[2px] relative overflow-hidden flex items-center justify-center rounded-2xl shadow-inner border border-brand-purple/10">
-                                <div class="text-brand-purple text-center p-4 h-full w-full flex flex-col justify-center items-center">
-                                    <img src="self.png" alt="João Cortez" width="500" height="600" class="w-full h-full object-cover rounded-xl" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80';">
+                                <div class="text-brand-purple text-center p-2 h-full w-full flex flex-col justify-center items-center">
+                                    <img src="self.png" alt="João Cortez" width="600" height="600" class="w-full h-full object-cover object-top rounded" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80';">
                                 </div>
                             </div>
                             
@@ -258,7 +258,7 @@
 
         <!-- Seção Contato -->
         <section id="contato" class="relative py-24 bg-brand-purple overflow-hidden">
-            <!-- Onda decorativa adaptada para ocultar em mobile se cobrir elementos, ou dimensionada para 100% de largura sem clipping de texto -->
+            <!-- Onda decorativa adaptada para dispositivos móveis -->
             <div class="absolute bottom-0 left-0 w-full md:w-2/3 h-1/2 md:h-full bg-brand-teal rounded-tr-[80px] md:rounded-tr-[250px] z-0 pointer-events-none opacity-80 md:opacity-100"></div>
             
             <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left flex flex-col md:flex-row items-center justify-between">
