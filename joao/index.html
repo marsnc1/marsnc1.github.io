@@ -118,11 +118,13 @@
             <div class="flex justify-between items-center">
                 <!-- Logotipo e Assinatura -->
                 <div class="flex items-center space-x-4">
-                    <!-- Símbolo Psi -->
-                    <div class="w-12 h-12 rounded-full border border-brand-gold flex items-center justify-center bg-transparent">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 22V6M12 6C12 6 12 2 12 2M12 6C12 10.5 8 13.5 4 13.5V4M12 6C12 10.5 16 13.5 20 13.5V4M8 22H16" stroke="#B89B5E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <!-- Símbolo Psi (Vetor Serifado) -->
+                    <div class="w-12 h-12 rounded-full border border-brand-gold flex items-center justify-center bg-transparent text-brand-gold">
+                        <svg class="w-8 h-8" viewBox="0 -410 3080 1900" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path transform="translate(640 -180.5)" d="M996.897 340.779q136.15 0 206.729-46.051 70.577-46.05 94.105-112.125 23.525-66.072 30.534-220.245 7.005-171.188 76.585-254.783 69.575-83.59 228.754-83.593v38.043q-57.066 4.005-77.586 44.549-20.524 40.546-20.523 171.691-.001 192.214-40.545 296.83-40.546 104.616-162.681 169.688-122.137 65.074-335.372 70.078v317.353q-.001 117.13 13.515 151.668 13.513 34.539 57.063 55.562 43.546 21.023 134.65 21.023v37.041h-602.67v-37.041q89.099-1 132.647-19.521 43.548-18.52 58.065-54.061 14.515-35.539 14.516-154.671V414.861q-215.24-5.004-334.372-69.077-119.132-64.07-161.679-167.686-42.548-103.614-42.547-300.834-.001-126.139-19.022-167.687-19.02-41.544-79.087-47.552v-38.043q101.111 2.004 163.181 32.036 62.068 30.035 99.611 106.118 37.54 76.086 42.547 200.222 7.007 153.172 29.533 219.244 22.524 66.074 94.605 112.625 72.079 46.552 207.23 46.552V-95.706q-.001-117.129-13.515-151.669-13.516-34.536-56.563-54.56-43.048-20.02-135.15-21.024V-360h602.67v37.041q-92.104 1.003-135.151 20.523-43.048 19.524-56.562 54.561-13.516 35.04-13.515 152.169z"/>
                         </svg>
+
+
                     </div>
                     <div class="flex flex-col border-l border-brand-purple pl-4">
                         <span class="font-serif font-semibold text-brand-purple tracking-widest uppercase text-sm">João Cortez</span>
@@ -140,7 +142,7 @@
         </div>
     </header>
 
-    <!-- Seção Hero (Inspirada nas composições de imagens) -->
+    <!-- Seção Hero -->
     <main>
         <section id="inicio" class="relative pt-10 pb-20 lg:pt-20 lg:pb-32 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -177,14 +179,14 @@
                             <!-- Detalhe dourado (simulando a textura de pincelada) -->
                             <div class="absolute w-full h-full" style="background: radial-gradient(circle at 80% 20%, #B89B5E 0%, transparent 20%); opacity: 0.4; mix-blend-color-dodge;"></div>
                             
-                            <!-- Imagem Representativa (Espaço para arte do cliente) -->
+                            <!-- Imagem Representativa -->
                             <div class="relative z-10 w-64 h-80 lg:w-80 lg:h-96 border-l border-b border-brand-gold p-4">
                                 <div class="w-full h-full bg-brand-light relative overflow-hidden flex items-center justify-center">
                                     <div class="text-brand-purple text-center p-6 border border-brand-purple/20 h-full w-full flex flex-col justify-center items-center">
                                          <svg class="w-12 h-12 text-brand-gold mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                                         <span class="font-serif italic text-lg">[ Espaço para Arte/Fotografia ]</span>
                                     </div>
-                                    <!-- Ramo Decorativo SVG (Simulando a folhagem das artes) -->
+                                    <!-- Ramo Decorativo SVG -->
                                     <svg class="absolute -bottom-6 -left-6 w-32 h-32 text-brand-teal opacity-80" viewBox="0 0 100 100" fill="currentColor">
                                         <path d="M10,90 Q30,60 70,20 Q60,40 80,60 Q50,70 10,90 Z" />
                                         <path d="M20,80 Q40,50 60,30 Q50,45 70,55 Q45,65 20,80 Z" fill="#B89B5E" />
@@ -200,7 +202,7 @@
         <!-- Divisor Decorativo -->
         <div class="gold-line w-full opacity-30"></div>
 
-        <!-- Seção Abordagem / Temas (Cards minimalistas) -->
+        <!-- Seção Abordagem -->
         <section id="abordagem" class="py-20 relative bg-brand-light">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-16">
@@ -245,9 +247,9 @@
             </div>
         </section>
 
-        <!-- Seção Contato / Call to Action (Design em Roxo Profundo e Azul Petróleo) -->
+        <!-- Seção Contato -->
         <section id="contato" class="relative py-24 bg-brand-purple overflow-hidden">
-            <!-- Onda decorativa (Azul petróleo) -->
+            <!-- Onda decorativa -->
             <div class="absolute bottom-0 left-0 w-full md:w-2/3 h-full bg-brand-teal rounded-tr-[100px] md:rounded-tr-[250px] z-0"></div>
             
             <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left flex flex-col md:flex-row items-center justify-between">
@@ -296,10 +298,10 @@
                 </div>
             </div>
             
-            <!-- Assinatura Fundo -->
-            <div class="absolute top-10 right-10 opacity-5 pointer-events-none">
-                 <svg width="200" height="200" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 22V6M12 6C12 6 12 2 12 2M12 6C12 10.5 8 13.5 4 13.5V4M12 6C12 10.5 16 13.5 20 13.5V4M8 22H16" stroke="#F2EEE8" stroke-width="0.5"/>
+            <!-- Assinatura Fundo (Vetor Serifado) -->
+            <div class="absolute top-10 right-10 opacity-[0.03] pointer-events-none">
+                 <svg width="250" height="250" viewBox="0 -410 3080 1900" fill="#F2EEE8" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M996.897 340.779q136.15 0 206.729-46.051 70.577-46.05 94.105-112.125 23.525-66.072 30.534-220.245 7.005-171.188 76.585-254.783 69.575-83.59 228.754-83.593v38.043q-57.066 4.005-77.586 44.549-20.524 40.546-20.523 171.691-.001 192.214-40.545 296.83-40.546 104.616-162.681 169.688-122.137 65.074-335.372 70.078v317.353q-.001 117.13 13.515 151.668 13.513 34.539 57.063 55.562 43.546 21.023 134.65 21.023v37.041h-602.67v-37.041q89.099-1 132.647-19.521 43.548-18.52 58.065-54.061 14.515-35.539 14.516-154.671V414.861q-215.24-5.004-334.372-69.077-119.132-64.07-161.679-167.686-42.548-103.614-42.547-300.834-.001-126.139-19.022-167.687-19.02-41.544-79.087-47.552v-38.043q101.111 2.004 163.181 32.036 62.068 30.035 99.611 106.118 37.54 76.086 42.547 200.222 7.007 153.172 29.533 219.244 22.524 66.074 94.605 112.625 72.079 46.552 207.23 46.552V-95.706q-.001-117.129-13.515-151.669-13.516-34.536-56.563-54.56-43.048-20.02-135.15-21.024V-360h602.67v37.041q-92.104 1.003-135.151 20.523-43.048 19.524-56.562 54.561-13.516 35.04-13.515 152.169z"/>
                 </svg>
             </div>
         </section>
