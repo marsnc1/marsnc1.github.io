@@ -38,6 +38,7 @@
             background-color: #F2EEE8;
             color: #333333;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
         
         /* Botões customizados */
@@ -118,13 +119,13 @@
             <div class="flex justify-between items-center">
                 <!-- Logotipo e Assinatura -->
                 <div class="flex items-center space-x-4">
-                    <!-- Símbolo Psi (Vetor Serifado) -->
-                    <div class="w-12 h-12 rounded-full border border-brand-gold flex items-center justify-center bg-transparent text-brand-gold">
-                        <svg class="w-8 h-8" viewBox="0 -410 3080 1900" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path transform="translate(640 -180.5)" d="M996.897 340.779q136.15 0 206.729-46.051 70.577-46.05 94.105-112.125 23.525-66.072 30.534-220.245 7.005-171.188 76.585-254.783 69.575-83.59 228.754-83.593v38.043q-57.066 4.005-77.586 44.549-20.524 40.546-20.523 171.691-.001 192.214-40.545 296.83-40.546 104.616-162.681 169.688-122.137 65.074-335.372 70.078v317.353q-.001 117.13 13.515 151.668 13.513 34.539 57.063 55.562 43.546 21.023 134.65 21.023v37.041h-602.67v-37.041q89.099-1 132.647-19.521 43.548-18.52 58.065-54.061 14.515-35.539 14.516-154.671V414.861q-215.24-5.004-334.372-69.077-119.132-64.07-161.679-167.686-42.548-103.614-42.547-300.834-.001-126.139-19.022-167.687-19.02-41.544-79.087-47.552v-38.043q101.111 2.004 163.181 32.036 62.068 30.035 99.611 106.118 37.54 76.086 42.547 200.222 7.007 153.172 29.533 219.244 22.524 66.074 94.605 112.625 72.079 46.552 207.23 46.552V-95.706q-.001-117.129-13.515-151.669-13.516-34.536-56.563-54.56-43.048-20.02-135.15-21.024V-360h602.67v37.041q-92.104 1.003-135.151 20.523-43.048 19.524-56.562 54.561-13.516 35.04-13.515 152.169z"/>
-                        </svg>
-
-
+                    <!-- Símbolo Psi (Vetor Serifado com container de proporção fixa) -->
+                    <div class="w-12 h-12 rounded-full border border-brand-gold flex items-center justify-center bg-transparent text-brand-gold flex-shrink-0">
+                        <div class="w-8 h-8 flex items-center justify-center">
+                            <svg class="w-full h-full object-contain" viewBox="0 -410 3080 1900" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path transform="translate(640 -180.5)" d="M996.897 340.779q136.15 0 206.729-46.051 70.577-46.05 94.105-112.125 23.525-66.072 30.534-220.245 7.005-171.188 76.585-254.783 69.575-83.59 228.754-83.593v38.043q-57.066 4.005-77.586 44.549-20.524 40.546-20.523 171.691-.001 192.214-40.545 296.83-40.546 104.616-162.681 169.688-122.137 65.074-335.372 70.078v317.353q-.001 117.13 13.515 151.668 13.513 34.539 57.063 55.562 43.546 21.023 134.65 21.023v37.041h-602.67v-37.041q89.099-1 132.647-19.521 43.548-18.52 58.065-54.061 14.515-35.539 14.516-154.671V414.861q-215.24-5.004-334.372-69.077-119.132-64.07-161.679-167.686-42.548-103.614-42.547-300.834-.001-126.139-19.022-167.687-19.02-41.544-79.087-47.552v-38.043q101.111 2.004 163.181 32.036 62.068 30.035 99.611 106.118 37.54 76.086 42.547 200.222 7.007 153.172 29.533 219.244 22.524 66.074 94.605 112.625 72.079 46.552 207.23 46.552V-95.706q-.001-117.129-13.515-151.669-13.516-34.536-56.563-54.56-43.048-20.02-135.15-21.024V-360h602.67v37.041q-92.104 1.003-135.151 20.523-43.048 19.524-56.562 54.561-13.516 35.04-13.515 152.169z"/>
+                            </svg>
+                        </div>
                     </div>
                     <div class="flex flex-col border-l border-brand-purple pl-4">
                         <span class="font-serif font-semibold text-brand-purple tracking-widest uppercase text-sm">João Cortez</span>
@@ -133,12 +134,27 @@
                     </div>
                 </div>
                 
+                <!-- Navegação Desktop -->
                 <nav class="hidden md:flex space-x-8">
                     <a href="#inicio" class="text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors">Início</a>
                     <a href="#abordagem" class="text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors">Abordagem</a>
                     <a href="#contato" class="text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors">Contacto</a>
                 </nav>
+
+                <!-- Botão Menu Mobile (Hamburger) -->
+                <button id="menu-btn" aria-label="Abrir Menu" class="md:hidden text-brand-purple focus:outline-none p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-light border-b border-brand-purple/10 px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" class="block text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors py-1">Início</a>
+            <a href="#abordagem" class="block text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors py-1">Abordagem</a>
+            <a href="#contato" class="block text-sm uppercase tracking-wider text-brand-teal hover:text-brand-gold transition-colors py-1">Contacto</a>
         </div>
     </header>
 
@@ -179,13 +195,12 @@
                             <!-- Detalhe dourado (simulando a textura de pincelada) -->
                             <div class="absolute w-full h-full" style="background: radial-gradient(circle at 80% 20%, #B89B5E 0%, transparent 20%); opacity: 0.4; mix-blend-color-dodge;"></div>
                             
-                            <!-- Imagem Representativa -->
-                                <div class="w-full h-full bg-brand-light relative overflow-hidden flex items-center justify-center">
-                                    <div class="text-brand-purple text-center p-6 border border-brand-purple/20 h-full w-full flex flex-col justify-center items-center">
-                                        <img src="self.png" alt="Joao Cortez" width="500" height="600">
-
-                                    </div>
+                            <!-- Imagem Representativa (Com tamanho e object-fit responsivos para evitar transbordamento) -->
+                            <div class="w-full h-full bg-brand-light/40 backdrop-blur-[2px] relative overflow-hidden flex items-center justify-center rounded-2xl shadow-inner border border-brand-purple/10">
+                                <div class="text-brand-purple text-center p-4 h-full w-full flex flex-col justify-center items-center">
+                                    <img src="self.png" alt="João Cortez" width="500" height="600" class="w-full h-full object-cover rounded-xl" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80';">
                                 </div>
+                            </div>
                             
                         </div>
                     </div>
@@ -243,8 +258,8 @@
 
         <!-- Seção Contato -->
         <section id="contato" class="relative py-24 bg-brand-purple overflow-hidden">
-            <!-- Onda decorativa -->
-            <div class="absolute bottom-0 left-0 w-full md:w-2/3 h-full bg-brand-teal rounded-tr-[100px] md:rounded-tr-[250px] z-0"></div>
+            <!-- Onda decorativa adaptada para ocultar em mobile se cobrir elementos, ou dimensionada para 100% de largura sem clipping de texto -->
+            <div class="absolute bottom-0 left-0 w-full md:w-2/3 h-1/2 md:h-full bg-brand-teal rounded-tr-[80px] md:rounded-tr-[250px] z-0 pointer-events-none opacity-80 md:opacity-100"></div>
             
             <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left flex flex-col md:flex-row items-center justify-between">
                 
@@ -252,7 +267,7 @@
                     <h2 class="font-serif text-3xl md:text-5xl text-brand-light mb-6 leading-tight">
                         Permita-se <span class="text-brand-gold italic">atravessar.</span>
                     </h2>
-                    <p class="text-brand-light/80 font-light mb-8 max-w-md mx-auto md:mx-0">
+                    <p class="text-brand-light/90 font-light mb-8 max-w-md mx-auto md:mx-0">
                         O primeiro passo para o autoconhecimento começa com o agendamento de uma sessão. Atendimento especializado.
                     </p>
                     
@@ -272,7 +287,7 @@
                     </ul>
                 </div>
 
-                <div class="md:w-5/12 bg-brand-light p-8 md:p-12 relative shadow-2xl border-t-4 border-brand-gold">
+                <div class="md:w-5/12 bg-brand-light p-8 md:p-12 relative shadow-2xl border-t-4 border-brand-gold rounded-lg">
                     <div class="absolute top-4 right-4 opacity-30">
                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="2" cy="2" r="1" fill="#B89B5E"/> <circle cx="14" cy="2" r="1" fill="#B89B5E"/>
@@ -285,15 +300,15 @@
                         Para informações sobre horários disponíveis e valores, entre em contacto via WhatsApp.
                     </p>
                     
-                    <a href="https://wa.me/+5522997734741" class="w-full bg-brand-purple text-brand-light px-6 py-4 flex items-center justify-center uppercase tracking-widest text-xs font-semibold hover:bg-brand-teal transition-colors">
-                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    <a href="https://wa.me/+5522997734741" target="_blank" rel="noopener noreferrer" class="w-full bg-brand-purple text-brand-light px-6 py-4 flex items-center justify-center uppercase tracking-widest text-xs font-semibold hover:bg-brand-teal transition-colors rounded shadow">
+                        <svg class="w-5 h-5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                         Mensagem WhatsApp
                     </a>
                 </div>
             </div>
             
             <!-- Assinatura Fundo (Vetor Serifado) -->
-            <div class="absolute top-10 right-10 opacity-[0.03] pointer-events-none">
+            <div class="absolute top-10 right-10 opacity-[0.03] pointer-events-none hidden md:block">
                  <svg width="250" height="250" viewBox="0 -410 3080 1900" fill="#F2EEE8" xmlns="http://www.w3.org/2000/svg">
                     <path d="M996.897 340.779q136.15 0 206.729-46.051 70.577-46.05 94.105-112.125 23.525-66.072 30.534-220.245 7.005-171.188 76.585-254.783 69.575-83.59 228.754-83.593v38.043q-57.066 4.005-77.586 44.549-20.524 40.546-20.523 171.691-.001 192.214-40.545 296.83-40.546 104.616-162.681 169.688-122.137 65.074-335.372 70.078v317.353q-.001 117.13 13.515 151.668 13.513 34.539 57.063 55.562 43.546 21.023 134.65 21.023v37.041h-602.67v-37.041q89.099-1 132.647-19.521 43.548-18.52 58.065-54.061 14.515-35.539 14.516-154.671V414.861q-215.24-5.004-334.372-69.077-119.132-64.07-161.679-167.686-42.548-103.614-42.547-300.834-.001-126.139-19.022-167.687-19.02-41.544-79.087-47.552v-38.043q101.111 2.004 163.181 32.036 62.068 30.035 99.611 106.118 37.54 76.086 42.547 200.222 7.007 153.172 29.533 219.244 22.524 66.074 94.605 112.625 72.079 46.552 207.23 46.552V-95.706q-.001-117.129-13.515-151.669-13.516-34.536-56.563-54.56-43.048-20.02-135.15-21.024V-360h602.67v37.041q-92.104 1.003-135.151 20.523-43.048 19.524-56.562 54.561-13.516 35.04-13.515 152.169z"/>
                 </svg>
@@ -303,8 +318,8 @@
 
     <!-- Rodapé -->
     <footer class="bg-brand-purple border-t border-white/10 pt-8 pb-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-brand-light/70 text-xs font-light tracking-wide">
-            <div class="flex items-center space-x-3 mb-4 md:mb-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-brand-light/70 text-xs font-light tracking-wide text-center md:text-left space-y-4 md:space-y-0">
+            <div class="flex items-center space-x-3 justify-center">
                 <span class="font-serif font-semibold text-brand-gold uppercase text-sm">João Cortez</span>
                 <span class="border-l border-brand-teal pl-3">Psicologia Clínica</span>
             </div>
@@ -314,5 +329,21 @@
         </div>
     </footer>
 
+    <!-- Script para controle do Menu Mobile -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fechar o menu ao clicar num link de navegação mobile
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
