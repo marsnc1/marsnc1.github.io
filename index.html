@@ -212,7 +212,7 @@
         .card {
             background: var(--card-bg-color);
             border: 1px solid var(--border-color);
-            border-top: 1px solid rgba(255, 255, 255, 0.2); /* Reflexo superior de vidro */
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 22px;
             padding: 2rem;
             text-align: left;
@@ -234,24 +234,6 @@
             grid-column: 1 / -1;
         }
 
-        .card.image-card {
-            padding: 0;
-            overflow: hidden;
-            min-height: 260px;
-        }
-
-        .card.image-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .card.image-card:hover img {
-            transform: scale(1.06);
-        }
-
         .card h2 {
             margin: 0 0 1.2rem 0;
             font-size: 1.2rem;
@@ -262,7 +244,6 @@
             gap: 0.6rem;
         }
 
-        /* Estrela / Ponto luminoso antes dos títulos */
         .card h2::before {
             content: '✦';
             color: var(--cor-destaque);
@@ -332,23 +313,24 @@
             margin-top: auto;
         }
 
-        .links-grid.two-columns {
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        .links-grid.four-columns {
+            grid-template-columns: repeat(4, 1fr);
         }
 
         a.link-button {
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            gap: 0.9rem;
-            padding: 0.9rem 1.25rem;
+            gap: 0.75rem;
+            padding: 0.85rem 1rem;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--border-color);
             border-radius: 14px;
             color: var(--text-color);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.93rem;
+            font-size: 0.9rem;
+            line-height: 1.3;
             transition: all 0.25s ease;
         }
 
@@ -390,8 +372,6 @@
         .card:nth-child(3) { animation: fadeIn 0.6s ease-out forwards; opacity: 0; animation-delay: 0.26s; }
         .card:nth-child(4) { animation: fadeIn 0.6s ease-out forwards; opacity: 0; animation-delay: 0.34s; }
         .card:nth-child(5) { animation: fadeIn 0.6s ease-out forwards; opacity: 0; animation-delay: 0.42s; }
-        .card:nth-child(6) { animation: fadeIn 0.6s ease-out forwards; opacity: 0; animation-delay: 0.5s; }
-        .card:nth-child(7) { animation: fadeIn 0.6s ease-out forwards; opacity: 0; animation-delay: 0.58s; }
 
         /* --- RODAPÉ --- */
         footer {
@@ -405,6 +385,12 @@
         }
 
         /* --- RESPONSIVIDADE --- */
+        @media (max-width: 900px) {
+            .links-grid.four-columns {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 2.5rem 1rem;
@@ -419,6 +405,12 @@
                 padding: 1.5rem;
             }
         }
+
+        @media (max-width: 520px) {
+            .links-grid.four-columns {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -427,12 +419,12 @@
         <!-- CABEÇALHO DE ACOLHIMENTO -->
         <header class="profile-header">
             <div class="avatar-wrapper">
-                <img src="media/eu.png" alt="Foto de Perfil de Marte Chagas" class="avatar" onerror="this.src='https://placehold.co/132x132/453643/D36582?text=MC'">
+                <img src="media/logo.png" alt="Foto de Perfil de Marte Chagas" class="avatar" onerror="this.src='https://placehold.co/132x132/453643/D36582?text=MC'">
             </div>
             <h1>Marte Nascimento Chagas</h1>
             <span class="crp-badge">Psicóloga Clínica • CRP 05/77098</span>
             <p class="hero-pitch">
-                Um espaço de escuta ética, acolhedora e livre de julgamentos para compreender suas vivências e construir novos sentidos.
+              Um espaço de escuta e acolhimento, sem julgamentos. Em busca de crescimento e construçao de novas possibilidades. 
             </p>
             <a href="https://wa.me/5522997635549?text=Ol%C3%A1%2C%20Marte!%20Gostaria%20de%20saber%20mais%20sobre%20os%20atendimentos%20psicol%C3%B3gicos." target="_blank" class="cta-primary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12C22 17.5228 17.5228 22 12 22C10.1786 22 8.47087 21.513 7 20.6622L2 21.5L2.83209 16C2.29689 14.7751 2 13.4222 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.9604 13.8683L15.0399 13.4624L17 14.2149V16.0385C17 16.6449 16.4783 17.1073 15.8901 16.9783C14.3671 16.6444 11.5997 15.8043 9.67826 13.8683C7.84859 12.0248 7.22267 9.45734 7.01039 8.04128C6.92535 7.47406 7.3737 7 7.94306 7H9.83707L10.572 8.96888L10.1832 11.0701" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -442,18 +434,18 @@
 
         <!-- BENTO GRID PRINCIPAL -->
         <main>
-            <!-- Card 1: Como funcionam os atendimentos (Novo - Foco Clínico) -->
+            <!-- Card 1: Como funcionam os atendimentos -->
             <div class="card">
                 <h2>Como funciona o atendimento</h2>
                 <p>A psicoterapia é um processo colaborativo, guiado pelo seu tempo e singularidade.</p>
                 <ul>
                     <li><strong>Sessões individuais:</strong> Encontros semanais com duração média de 50 minutos.</li>
-                    <li><strong>Primeiro contato:</strong> Uma conversa inicial para alinhar dúvidas, horários e combinar o início do processo.</li>
+                    <li><strong>Primeiro contato:</strong> Uma conversa inicial para conhecer sua história, tirar dúvidas, o início do processo.</li>
                     <li><strong>Sigilo profissional:</strong> Ambiente seguro e resguardado pelo Código de Ética da Psicologia.</li>
                 </ul>
                 <div class="tags-row">
-                    <span class="tag">Atendimento Online</span>
-                    <span class="tag">Presencial • Macaé-RJ</span>
+                    <span class="tag">Atendimento Online - Google Meet</span>
+                    <span class="tag">Presencial - Núcleo de Saúde Mental, Macaé-RJ</span>
                 </div>
             </div>
 
@@ -463,9 +455,9 @@
                 <p>Acolhimento clínico atento aos atravessamentos sociais, subjetivos e relacionais:</p>
                 <ul>
                     <li>Gênero, sexualidade e vivências LGBTQIAPN+</li>
-                    <li>Raça, negritude e saúde mental</li>
+                    <li>Raça e negritude</li>
                     <li>Autismo, TDAH e neurodivergências</li>
-                    <li>Estresse, ansiedade e transições de vida</li>
+                    <li>Estresse e ansiedade</li>
                 </ul>
             </div>
 
@@ -474,9 +466,8 @@
                 <h2>Sobre mim</h2>
                 <p>Graduada em Psicologia pela Universidade Federal Fluminense (UFF — Rio das Ostras/RJ).</p>
                 <ul>
-                    <li>Atuação clínica na abordagem <strong>Fenomenológico-Existencial</strong></li>
-                    <li>Pós-graduanda em <strong>Sexologia Clínica</strong></li>
-                    <li>Psicóloga no CRAS Lagomar (Macaé-RJ)</li>
+                    <li>Atuação clínica na abordagem <strong>Fenomenológico-Existencial pelo viés da Gestalt-Terapia</strong></li>
+                    <li>Psicóloga no Núcleo de Saúde Mental - Macaé-RJ</li>
                 </ul>
             </div>
 
@@ -487,45 +478,49 @@
                 <div class="links-grid">
                     <a class="link-button" href="https://wa.me/5522997635549" target="_blank">
                         <svg viewBox="0 0 24 24"><path d="M22 12C22 17.5228 17.5228 22 12 22C10.1786 22 8.47087 21.513 7 20.6622L2 21.5L2.83209 16C2.29689 14.7751 2 13.4222 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.9604 13.8683L15.0399 13.4624L17 14.2149V16.0385C17 16.6449 16.4783 17.1073 15.8901 16.9783C14.3671 16.6444 11.5997 15.8043 9.67826 13.8683C7.84859 12.0248 7.22267 9.45734 7.01039 8.04128C6.92535 7.47406 7.3737 7 7.94306 7H9.83707L10.572 8.96888L10.1832 11.0701" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        <span>WhatsApp: (22) 99763-5549</span>
+                        <span>WhatsApp - (22) 99763-5549</span>
                     </a>
                     <a class="link-button" href="mailto:martenc.psi@gmail.com">
                         <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
-                        <span>martenc.psi@gmail.com</span>
+                        <span>Email - martenc.psi@gmail.com</span>
                     </a>
-                    <a class="link-button" href="https://instagram.com/marsnc1" target="_blank">
+                    <a class="link-button" href="https://instagram.com/marte.psi" target="_blank">
                         <svg viewBox="0 0 24 24"><path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z"/><path d="M17.5 6.51L17.51 6.49889" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        <span>Instagram (@marsnc1)</span>
+                        <span>Instagram - @marte.psi</span>
                     </a>
                 </div>
             </div>
 
-            <!-- Card 5: Produção, Currículo e Indicações -->
+            <!-- Card 5: Produção, Currículo e Indicações (4 colunas) -->
             <div class="card full-width">
                 <h2>Trajetória Acadêmica, Escritas e Rede de Apoio</h2>
                 <p>Conheça minhas produções, projetos artísticos e profissionais parceiros:</p>
                 
-                <div class="links-grid two-columns" style="margin-top: 0.8rem;">
+                <div class="links-grid four-columns" style="margin-top: 0.8rem;">
                     <a class="link-button highlight-sage" href="http://lattes.cnpq.br/0298685385668125" target="_blank">
                         <svg viewBox="0 0 24 24"><path d="M2.57331 8.46334L11.2317 4.13416C11.4006 4.04971 11.5994 4.04971 11.7683 4.13416L20.4267 8.46334C20.8689 8.68446 20.8689 9.31554 20.4267 9.53666L11.7683 13.8658C11.5994 13.9503 11.4006 13.9503 11.2317 13.8658L2.57331 9.53666C2.13108 9.31554 2.13108 8.68446 2.57331 8.46334Z" stroke-linecap="round" stroke-linejoin="round"/><path d="M22.5 13L22.5 9.5L20.5 8.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 10.5V15.9121C4.5 16.6843 4.94459 17.3876 5.6422 17.7188L10.6422 20.0928C11.185 20.3505 11.815 20.3505 12.3578 20.0928L17.3578 17.7188C18.0554 17.3876 18.5 16.6843 18.5 15.9121V10.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         <span>Currículo Lattes</span>
                     </a>
-                    <a class="link-button highlight-sage" href="https://pecro.com.br/blog" target="_blank">
+                    <a class="link-button highlight-sage" href="https://marsnc1.github.io/blog" target="_blank">
                         <svg viewBox="0 0 24 24"><path d="M14.3632 5.65156L15.8431 4.17157C16.6242 3.39052 17.8905 3.39052 18.6716 4.17157L20.0858 5.58579C20.8668 6.36683 20.8668 7.63316 20.0858 8.41421L18.6058 9.8942M14.3632 5.65156L4.74749 15.2672C4.41542 15.5993 4.21079 16.0376 4.16947 16.5054L3.92738 19.2459C3.87261 19.8659 4.39148 20.3848 5.0115 20.33L7.75191 20.0879C8.21972 20.0466 8.65806 19.8419 8.99013 19.5099L18.6058 9.8942M14.3632 5.65156L18.6058 9.8942" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         <span>Textos e Blog</span>
                     </a>
-                    <a class="link-button highlight-sage" href="https://www.pecro.com.br/recomendacoes" target="_blank">
+                    <a class="link-button highlight-sage" href="https://marsnc1.github.io/recomendacoes" target="_blank">
                         <svg viewBox="0 0 24 24"><path d="M14 11.9976C14 9.5059 11.683 7 8.85714 7C8.52241 7 7.41904 7.00001 7.14286 7.00001C4.30254 7.00001 2 9.23752 2 11.9976C2 14.376 3.70973 16.3664 6 16.8714C6.36756 16.9525 6.75006 16.9952 7.14286 16.9952" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 11.9976C10 14.4893 12.317 16.9952 15.1429 16.9952C15.4776 16.9952 16.581 16.9952 16.8571 16.9952C19.6975 16.9952 22 14.7577 22 11.9976C22 9.6192 20.2903 7.62884 18 7.12383C17.6324 7.04278 17.2499 6.99999 16.8571 6.99999" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         <span>Leituras Recomendadas</span>
                     </a>
                     <a class="link-button highlight-sage" href="https://instagram.com/arte.marsnc1" target="_blank">
                         <svg viewBox="0 0 24 24"><path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z"/><path d="M17.5 6.51L17.51 6.49889" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        <span>Portfólio de Artes</span>
+                        <span>Algumas Artes</span>
                     </a>
                 </div>
 
                 <p style="margin-top: 1.5rem; margin-bottom: 0.8rem; font-size: 0.9rem;">Psicólogas(os) de confiança para indicação:</p>
-                <div class="links-grid two-columns">
+                <div class="links-grid four-columns">
+                    <a class="link-button" href="https://www.instagram.com/joaocortez.psi/" target="_blank">
+                        <img src="https://unavatar.io/instagram/joaocortez.psi" alt="João Cortez" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1px solid var(--cor-destaque);" onerror="this.style.display='none'">
+                        <span>João Cortez<br><span style="font-size: 0.82em; color: var(--text-muted);">CRP 05/76792</span></span>
+                    </a>
                     <a class="link-button" href="https://www.instagram.com/psi.nayaram/" target="_blank">
                         <img src="https://unavatar.io/instagram/psi.nayaram" alt="Nayara Mesquita" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1px solid var(--cor-destaque);" onerror="this.style.display='none'">
                         <span>Nayara Mesquita<br><span style="font-size: 0.82em; color: var(--text-muted);">CRP 05/77114</span></span>
@@ -534,32 +529,18 @@
                         <img src="https://unavatar.io/instagram/queldonega" alt="Raquel Donegá" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1px solid var(--cor-destaque);" onerror="this.style.display='none'">
                         <span>Raquel Donegá<br><span style="font-size: 0.82em; color: var(--text-muted);">CRP 05/77092</span></span>
                     </a>
-                    <a class="link-button" href="https://www.instagram.com/joaocortez.psi/" target="_blank">
-                        <img src="https://unavatar.io/instagram/joaocortez.psi" alt="João Cortez" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1px solid var(--cor-destaque);" onerror="this.style.display='none'">
-                        <span>João Cortez<br><span style="font-size: 0.82em; color: var(--text-muted);">CRP 05/76792</span></span>
-                    </a>
                     <a class="link-button" href="https://www.instagram.com/psi.kathleengalvao/" target="_blank">
                         <img src="https://unavatar.io/instagram/psi.kathleengalvao" alt="Kathleen Galvão" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1px solid var(--cor-destaque);" onerror="this.style.display='none'">
                         <span>Kathleen Galvão<br><span style="font-size: 0.82em; color: var(--text-muted);">CRP 06/205459</span></span>
                     </a>
                 </div>
             </div>
-
-            <!-- Cards 6 e 7: Expressão Artística -->
-            <div class="card image-card">
-                <img src="arte/grude.jpg" alt="Obra visual por Marte Chagas" onerror="this.src='https://placehold.co/400x300/453643/D36582?text=Arte+1'">
-            </div>
-            
-            <div class="card image-card">
-                <img src="arte/-144.png" alt="Obra visual por Marte Chagas" onerror="this.src='https://placehold.co/400x300/453643/788475?text=Arte+2'">
-            </div>
-
         </main>
         
         <!-- RODAPÉ -->
         <footer>
-            <p>&copy; 2026 Marte Nascimento Chagas • Psicóloga Clínica (CRP 05/77098)</p>
-            <p style="font-size: 0.8rem; opacity: 0.75; margin-top: 0.3rem;">Atendimento pautado no Código de Ética Profissional do Psicólogo (CFP).</p>
+            <p>&copy; 2026 Marte Nascimento Chagas</p>
+            <p style="font-size: 0.8rem; opacity: 0.75; margin-top: 0.3rem;">Psicóloga Clínica (CRP 05/77098)</p>
         </footer>
 
     </div>
